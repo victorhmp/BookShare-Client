@@ -26,24 +26,5 @@ https://docs.docker.com/compose/install/.
   docker-compose build
   docker-compose up
   ```
-  **NOTE:** These commands will **create a Docker image for the API**,
-  **set up the database with the latest schema** and **load the server**.
-  By default, the API will be available at `localhost:3000`.
-
-## Observations
-
-- The `build` operation may take a while depending on your internet connetion.
-  It will download all dependencies specified at `Gemfile` and `Gemfile.lock`
-  whenever these files are changed.
-
-- The API uses two databases:
-  - [PostgreSQL](https://www.postgresql.org/), an open source relational
-    database management system (RDBMS). It is used by Rails to persist objects
-    of a given class as tuples in a corresponding table.
-  - [Redis](https://redis.io/), an open source in-memory data structure store.
-    It is used by Rails to create a cache to speed up HTTP responses.
-
-- The application and the databases are configured with environment variables,
-  accordingly to [The Twelve-Factor App](https://12factor.net/). Development
-  settings are available in the file `.env`. **These settings must be overriden
-  for non-development environments**.
+  **NOTE:** These commands will **create a Docker image for the React App**,
+  By default, the API will be available at `localhost:8080`.
