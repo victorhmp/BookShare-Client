@@ -7,13 +7,14 @@ class RegisterForm extends React.Component {
       username: '',
       email: '',
       password: '',
+      error: ''
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
     const name = e.target.name;
-    const val = e.target.val;
+    const val = e.target.value;
 
     this.setState({
       [name]: val,
@@ -22,7 +23,7 @@ class RegisterForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         <form onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
           <input 
             type="text"

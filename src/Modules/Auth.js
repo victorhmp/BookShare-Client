@@ -15,3 +15,5 @@ class Auth {
     return sessionStorage.getItem('token');
   }
 }
+
+export default Auth;
