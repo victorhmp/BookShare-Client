@@ -21,10 +21,9 @@ https://docs.docker.com/compose/install/.
 
 ## Setup
 
-- To set up the API server for development, run:
+- To set up the App for development, run:
   ```
   docker-compose build
-  docker-compose run --rm api rails db:setup
   docker-compose up
   ```
   **NOTE:** These commands will **create a Docker image for the API**,
