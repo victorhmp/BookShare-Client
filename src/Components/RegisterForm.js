@@ -49,7 +49,7 @@ class RegisterForm extends React.Component {
           <button>Register!</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
