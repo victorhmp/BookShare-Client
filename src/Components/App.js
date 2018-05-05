@@ -3,12 +3,13 @@ import Auth from '../Modules/Auth';
 import '../App.css';
 import axios from 'axios';
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import NotFoundPage from './NotFoundPage';
 import Header from './Header';
 import Home from './Home';
+import Dashboard from './Dashboard';
 
 class App extends Component {
   constructor() {
@@ -18,6 +19,7 @@ class App extends Component {
     };
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleRegisterSubmit(e, data) {
@@ -31,7 +33,7 @@ class App extends Component {
     }).then((response) => {
       Auth.authenticateToken(response.data);
       this.setState({
-        auth: Auth.isUserAuthenticated()
+        auth: Auth.isUserAuthenticated(),
       });
     }).catch(err => {
       console.log(err);
@@ -45,13 +47,29 @@ class App extends Component {
         'Content-Type': 'application/json',
       }
     }).then(response => {
-      Auth.authenticateToken(response.data);
+      Auth.authenticateToken(response.data.token);
       this.setState({
-        auth: Auth.isUserAuthenticated()
+        auth: Auth.isUserAuthenticated(),
+        // shouldGoToDashboard: true,
       });
+      console.log(Auth.getToken());
     }).catch(err => {
       console.log(err);
     })
+  }
+
+  handleLogout() {
+    axios.delete('http://localhost:3000/logout', {
+      headers: {
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
+      }
+    }).then(response => {
+      Auth.deauthenticateUser();
+      this.setState({
+        auth: Auth.isUserAuthenticated(),
+      })
+    }).catch((err) => console.log(err));
   }
 
   render() {
@@ -59,15 +77,27 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Header />
+          {this.state.auth ? <span onClick={this.handleLogout}>Logout</span> : ''}
           <Switch>
             <Route path="/" component={Home} exact={true} />
             <Route 
               path="/register" 
-              render={() => <RegisterForm handleRegisterSubmit={this.handleRegisterSubmit}/>}
+              render={
+                () => (this.state.auth)
+                ? <Redirect to="dash" />
+                : <RegisterForm handleRegisterSubmit={this.handleRegisterSubmit}/>}
             />
             <Route 
               path="/login" 
-              render={() => <LoginForm handleLoginSubmit={this.handleLoginSubmit}/>}
+              render={
+                () => (this.state.auth)
+                ? <Redirect to="dash" />
+                : <LoginForm handleLoginSubmit={this.handleLoginSubmit} />
+              }
+            />
+            <Route 
+              path="/dash"
+              render={() => <Dashboard />}
             />
             <Route component={NotFoundPage} />
           </Switch>
