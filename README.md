@@ -1,11 +1,19 @@
-# BookShare Client
+# BookShare
 
-## For local development
+BookShare is a collaborative platform for sharing books though trading.
+We aim to make it easy for people to read more and more books, sharing those books you already read to other readers and receiving new books from them.
 
-```bash
-# install dependencies
-$ yarn install
+## Client
 
-# serve with hot reload at localhost:8080
-$ yarn start
-```
+This repository is for BookShare's Web App client, built with React.
+
+For instructions on running it locally and contributing to the project, please refer to `CONTRIBUTING.md`.
+
+## Contributors
+
+This project was created as part of the discipline MAC0218 and is made by:
+
+- Victor Hugo M. Pinto - [victorhmp](https://github.com/victorhmp)
+- Ricardo Hideki Kojo - [ricardokojo](https://github.com/ricardokojo)
+- Yurick Honda - [yurickyh](https://github.com/yurickyh)
+- Kaique Komata - [kaiquekk](https://github.com/kaiquekk)
