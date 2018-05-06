@@ -27,4 +27,4 @@ https://docs.docker.com/compose/install/.
   docker-compose up
   ```
   **NOTE:** These commands will **create a Docker image for the React App**,
-  By default, the API will be available at `localhost:8080`.
+  By default, the app will be available at `localhost:8080`.
