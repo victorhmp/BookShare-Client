@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Auth from '../Modules/Auth';
-import '../App.css';
 import axios from 'axios';
 
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
