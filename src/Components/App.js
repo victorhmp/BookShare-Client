@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Auth from '../Modules/Auth';
 import axios from 'axios';
 
+import '../styles/styles.scss';
+
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
