@@ -8,8 +8,8 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import NotFoundPage from './NotFoundPage';
-import Header from './Header';
-import Home from './Home';
+import Navbar from './Navbar';
+import LandingPage from './LandingPage';
 import Dashboard from './Dashboard';
 
 class App extends Component {
@@ -77,10 +77,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Header />
-          {this.state.auth ? <span onClick={this.handleLogout}>Logout</span> : ''}
+          <Navbar loggedIn={this.state.auth} handleLogout={this.handleLogout} />
           <Switch>
-            <Route path="/" component={Home} exact={true} />
+            <Route path="/" component={LandingPage} exact={true} />
             <Route 
               path="/register" 
               render={
@@ -98,7 +97,11 @@ class App extends Component {
             />
             <Route 
               path="/dash"
-              render={() => <Dashboard />}
+              render={
+                () => (this.state.auth)
+                ? <Dashboard />
+                : <Redirect to="/" />
+              }
             />
             <Route component={NotFoundPage} />
           </Switch>

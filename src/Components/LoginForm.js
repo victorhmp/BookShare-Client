@@ -21,25 +21,27 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="form">
-        <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
-          <input 
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <input 
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <button>Log in!</button>
-        </form>
-      </div>
+      <section>
+        <div className="section-wrapper form">
+          <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+            <input 
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <input 
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+            <button>Log in!</button>
+          </form>
+        </div>
+      </section>
     )
   }
 }
