@@ -21,7 +21,7 @@
     margin: 0;
   }
 }
-.flex-container{
+.navlink-container{
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
@@ -32,11 +32,11 @@
     text-align: center;
   }
 }
-.link{
+.navlink-div{
   border: .2rem solid $off-white;
   border-radius: .9rem;
 
-  .nav{
+  .is-active{
     color: white;
     font-size: $sm-size;
   }
