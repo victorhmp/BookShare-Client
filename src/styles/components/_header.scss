@@ -1,19 +1,44 @@
 .header {
   background: $off-black;
-  color: white;
   margin-bottom: $md-size;
   padding: $md-size 0;
+  border-width: .1rem;
+  border-radius: 1rem;
 
   &__title {
+    color: $off-white;
+    text-align: center;
     font-size: $lg-size;
     margin: 0;
   }
 
   &__subtitle {
+    text-align: center;
     color: $off-white;
     font-size: $md-size;
-    font-weight: 500;
+    font-weight: 300;
+    font-style: italic;
     margin: 0;
+  }
+}
+.navlink-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  margin-right: $md-size; 
+
+  div{
+    width: 8rem;
+    text-align: center;
+  }
+}
+.navlink-div{
+  border: .2rem solid $off-white;
+  border-radius: .9rem;
+
+  .is-active{
+    color: white;
+    font-size: $sm-size;
   }
 }
 
