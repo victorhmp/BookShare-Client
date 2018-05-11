@@ -1,11 +1,15 @@
 html {
-  font-size: 62.5%;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-  background: $off-white;
+  background: $paper-white;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: $md-size;
+  font-size: 1rem;
+
+  margin: 0;
+  padding: 0;
 }
 
 button {

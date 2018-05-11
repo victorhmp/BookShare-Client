@@ -1,0 +1,39 @@
+.navbar {
+    background-color: $phantom-white;
+    border-bottom: 1px solid $paper-white;
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+
+    max-height: $navbar-maxheight;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+
+    &__logo {
+        max-width: 3rem;
+    }
+
+    &__items {
+        align-items: center;
+        display: flex;
+        list-style: none;
+        padding: 0;
+
+        li:first-child,
+        li:last-child,
+        li:not(.right)
+        {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .right {
+            align-items: center;
+            display: flex;
+            margin-left: auto;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+}
