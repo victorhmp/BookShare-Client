@@ -1,4 +1,4 @@
-# BookShare
+# SwaB
 
 BookShare is a collaborative platform for sharing books though trading.
 We aim to make it easy for people to read more and more books, sharing those books you already read to other readers and receiving new books from them.
