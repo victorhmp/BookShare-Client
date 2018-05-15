@@ -9,6 +9,8 @@ This repository is for SwaB Web App client, built with React.
 
 For instructions on running it locally and contributing to the project, please refer to `CONTRIBUTING.md`.
 
+For our progression plan, please refer to this repository Wiki.
+
 ## Contributors
 
 This project was created as part of the discipline MAC0218 and is made by:
