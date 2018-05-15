@@ -5,7 +5,7 @@ We aim to make it easy for people to read more and more books, sharing those boo
 
 ## Client
 
-This repository is for BookShare's Web App client, built with React.
+This repository is for SwaB Web App client, built with React.
 
 For instructions on running it locally and contributing to the project, please refer to `CONTRIBUTING.md`.
 
