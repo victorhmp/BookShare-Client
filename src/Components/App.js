@@ -11,6 +11,7 @@ import NotFoundPage from './NotFoundPage';
 import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 import Dashboard from './Dashboard';
+import Wishlist from './Wishlist';
 
 class App extends Component {
   constructor() {
@@ -100,6 +101,14 @@ class App extends Component {
               render={
                 () => (this.state.auth)
                 ? <Dashboard />
+                : <Redirect to="/" />
+              }
+            />
+            <Route 
+              path="/wishlists"
+              render={
+                () => (this.state.auth)
+                ? <Wishlist />
                 : <Redirect to="/" />
               }
             />
