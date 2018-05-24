@@ -5,7 +5,7 @@ const Home = () => (
   <section id="header">
     <div className="section-wrapper">
     <img src={logo} alt="logo" className="logo"/>
-    <h1>Welcome to BookShare!</h1>
+    <h1>Welcome to SwaB!</h1>
     <p>Please login or register a new user to get started!</p>
     </div>
   </section>

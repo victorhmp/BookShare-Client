@@ -16,16 +16,18 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar">
         <ul className="navbar__items" role="navigation">
-          <li> <NavLink to={this.props.loggedIn ? "/dash" : "/"} activeClassName="is-active" exact={true}> <img src={logo} className="navbar__logo" alt="logo" /> </NavLink> </li>
-          <li> <NavLink to={this.props.loggedIn ? "/dash" : "/"} activeClassName="is-active" exact={true}>Home</NavLink> </li>
+          <li> <NavLink to={this.props.loggedIn ? "/dash" : "/"} exact={true}> <img src={logo} className="navbar__logo" alt="logo" /> </NavLink> </li>
+          <li> <NavLink to={this.props.loggedIn ? "/dash" : "/"} exact={true}>Home</NavLink> </li>
+
           {this.props.loggedIn ? 
             <div className="right">
-              <li> <span onClick={this.props.handleLogout}>Logout</span> </li>
-            </div>
+              <li> <NavLink to={this.props.loggedIn ? "/wishlists" : "/"} exact={true}>My Wishlists</NavLink> </li>
+              <li> <NavLink to={this.props.loggedIn ? "/profile" : "/"} exact={true}>My Profile</NavLink> </li>
+              <li> <span onClick={this.props.handleLogout}>Logout</span> </li>            </div>
             :
             <div className="right">
-              <li> <NavLink to="/register" activeClassName="is-active">Register</NavLink> </li>
-              <li> <NavLink to="/login" activeClassName="is-active">Login</NavLink> </li>
+              <li> <NavLink to="/register">Register</NavLink> </li>
+              <li> <NavLink to="/login">Login</NavLink> </li>
             </div>
           }
         </ul>

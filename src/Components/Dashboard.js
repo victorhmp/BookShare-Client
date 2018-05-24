@@ -7,40 +7,46 @@ class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      myWishlists: null,
-      wishlistsLoaded: false,
+      myFeed: null,
+      feedLoaded: false,
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/profile', {
+    axios.get('http://localhost:3000/advertisements/feed', {
       headers: {
         token: Auth.getToken(),
         'Authorization' : `Token ${Auth.getToken()}`,
       }
     }).then((response) => {
+      console.log(response.data);
       this.setState({
-        myWishlists: response.data.wishlists,
-        wishlistsLoaded: true
+        myFeed: response.data.feed,
+        feedLoaded: true
       })
     }).catch((err) => console.log(err));
   }
 
   render() {
     return (
-      <div>
-        {(this.state.wishlistsLoaded) 
-        ? this.state.myWishlists.map(wishlist => {
-          return (
-            <div key={wishlist.id}>
-              <h1>{wishlist.name}</h1>
-              <p>{wishlist.description}</p>
-            </div>
-          );
-        })
-        : <p>Loading...</p>
-        }
-      </div>
+      <section id="dashboard">
+        <div className="section-wrapper">
+          {(this.state.feedLoaded) 
+          ? this.state.myFeed.map(adv => {
+            return (
+              <div key={adv.id}>
+                <h1>Livro: {adv.book_title}</h1>
+                <p>Autor: {adv.book_author}</p>
+                <p>Editora: {adv.book_publication}</p>
+                <p>Comentário do Usuário: {adv.comment}</p>
+                <p>Por: {adv.user.username}</p>
+              </div>
+            );
+          })
+          : <p>Loading...</p>
+          }
+        </div>
+      </section>
     );
   }
 }
