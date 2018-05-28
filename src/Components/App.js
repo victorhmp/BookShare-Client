@@ -33,7 +33,7 @@ class App extends Component {
         'Content-Type': 'application/json',
       }
     }).then((response) => {
-      Auth.authenticateToken(response.data);
+      Auth.authenticateToken(response.data.token);
       this.setState({
         auth: Auth.isUserAuthenticated(),
       });
