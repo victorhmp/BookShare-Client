@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Auth from '../Modules/Auth';
+import CardAdvertisement from './CardAdvertisement';
 
 class Dashboard extends React.Component {
   constructor() {
@@ -34,13 +35,7 @@ class Dashboard extends React.Component {
           {(this.state.feedLoaded) 
           ? this.state.myFeed.map(adv => {
             return (
-              <div key={adv.id}>
-                <h1>Livro: {adv.book_title}</h1>
-                <p>Autor: {adv.book_author}</p>
-                <p>Editora: {adv.book_publication}</p>
-                <p>Comentário do Usuário: {adv.comment}</p>
-                <p>Por: {adv.user.username}</p>
-              </div>
+              <CardAdvertisement adv={adv} />
             );
           })
           : <p>Loading...</p>
