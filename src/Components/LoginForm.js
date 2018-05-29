@@ -24,10 +24,10 @@ class LoginForm extends React.Component {
     return (
       <section id="header"> 
         <div className="section-wrapper-form">          
-          <span class="login-title">Login</span>
-          <form class="login-form" onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+          <span className="login-title">Login</span>
+          <form className="login-form" onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
             <input 
-              class="input"
+              className="input"
               type="text"
               name="username"
               placeholder="Username"
@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
               onChange={this.handleChange}
             />
             <input 
-              class="input"
+              className="input"
               type="password"
               name="password"
               placeholder="Password"
@@ -43,8 +43,8 @@ class LoginForm extends React.Component {
               onChange={this.handleChange}
             />
             <NavLink id="forgot-pass" to="/recover">Forgot your password?</NavLink>
-            <div class="button-container">
-              <button class="form-button">Submit</button>
+            <div className="button-container">
+              <button className="form-button">Submit</button>
             </div>
           </form>
         </div>
