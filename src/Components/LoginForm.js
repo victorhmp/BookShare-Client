@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor() {
@@ -21,10 +22,12 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <section>
-        <div className="section-wrapper form">
-          <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+      <section id="header">
+        <div className="section-wrapper-form">          
+          <span class="login-title">Login</span>
+          <form class="login-form" onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
             <input 
+              class="login-input"
               type="text"
               name="username"
               placeholder="Username"
@@ -32,13 +35,17 @@ class LoginForm extends React.Component {
               onChange={this.handleChange}
             />
             <input 
+              class="login-input"
               type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <button>Log in!</button>
+            <NavLink id="forgot-pass" to="/login">Forgot your password?</NavLink>
+            <div class="button-container">
+              <button class="form-button">Submit</button>
+            </div>
           </form>
         </div>
       </section>
