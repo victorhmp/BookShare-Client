@@ -36,8 +36,8 @@ class WishlistItem extends React.Component{
                         return(
                             <div> key={itm.id}>
                                 <h1>Livro: {itm.book_title}</h1>
-                                <p>Autor: {book_author}</p>
-                                <p>Editora: {book_publication}</p>
+                                <p>Autor: {itm.book_author}</p>
+                                <p>Editora: {itm.book_publication}</p>
                             </div>
                         );
                     })
