@@ -25,10 +25,10 @@ class RegisterForm extends React.Component {
     return (
       <section id="header">
         <div className="section-wrapper-form">        
-          <span class="register-title">Sign Up</span>
-          <form class="register-form" onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
+          <span className="register-title">Sign Up</span>
+          <form className="register-form" onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
             <input 
-              class="input"
+              className="input"
               type="text"
               name="username"
               placeholder="Username"
@@ -36,7 +36,7 @@ class RegisterForm extends React.Component {
               onChange={this.handleChange}
             />
             <input 
-              class="input"
+              className="input"
               type="email"
               name="email"
               placeholder="Email"
@@ -44,15 +44,15 @@ class RegisterForm extends React.Component {
               onChange={this.handleChange}
             />
             <input 
-              class="input"
+              className="input"
               type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <div class="button-container">
-              <button class="form-button">Register!</button>
+            <div className="button-container">
+              <button className="form-button">Register!</button>
             </div>
           </form>
         </div>
