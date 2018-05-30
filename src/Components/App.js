@@ -12,6 +12,7 @@ import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 import Dashboard from './Dashboard';
 import Wishlist from './Wishlist';
+import WishlistCreate from './WishCreate';
 
 class App extends Component {
   constructor() {
@@ -22,6 +23,7 @@ class App extends Component {
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleWishlistSubmit = this.handleWishlistSubmit.bind(this);
   }
 
   handleRegisterSubmit(e, data) {
