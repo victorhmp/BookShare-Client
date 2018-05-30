@@ -21,7 +21,7 @@ class WishlistItem extends React.Component{
         }).then((response) => {
             console.log(response.data);
             this.setState({
-                myItem: response.data.item,
+                myItem: response.data,
                 itemListLoaded: true
             })
         }).catch((err) => console.log(err));
@@ -34,7 +34,7 @@ class WishlistItem extends React.Component{
                     {(this.state.itemListLoaded)
                     ? this.state.myItem.map(itm => {
                         return(
-                            <div> key={itm.id}>
+                            <div key={itm.id}>
                                 <h1>Livro: {itm.book_title}</h1>
                                 <p>Autor: {itm.book_author}</p>
                                 <p>Editora: {itm.book_publication}</p>
