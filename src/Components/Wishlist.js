@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {NavLink} from 'react-router-dom';
 
 import Auth from '../Modules/Auth';
 
@@ -30,6 +31,7 @@ class Wishlist extends React.Component {
     return (
       <section id="wishlists">
         <div className="section-wrapper">
+        <NavLink to={this.props.loggedIn ? "/wishlists" : "/wishlistsCreate"} exact={true}>New Wishlist</NavLink>
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
             return (
@@ -40,7 +42,7 @@ class Wishlist extends React.Component {
             );
           })
           : <p>Loading...</p>
-          }
+          }          
         </div>
       </section>
     );
