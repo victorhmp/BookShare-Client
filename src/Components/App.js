@@ -137,7 +137,7 @@ class App extends Component {
               render={
                 () => (this.state.auth)
                 ? <WishlistCreate />
-                : <Redirect to="/" />
+                : <WishlistCreate handleWishlistSubmit={this.handleWishlistSubmit} />
               }
             />
             <Route component={NotFoundPage} />
