@@ -78,17 +78,16 @@ class App extends Component {
 
   handleWishlistSubmit(e, data) {
     e.preventDefault();
-    axios.post(`http://localhost:3000/wishlists`, JSON.stringify({
-      user: data,
+    axios.post('http://localhost:3000/wishlists', JSON.stringify({
+      wishlist: data,
     }), {
       headers: {
         'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
       }
     }).then((response) => {
-      Auth.authenticateToken(response.data.token);
-      this.setState({
-        auth: Auth.isUserAuthenticated(),
-      });
+      console.log(response);
     }).catch(err => {
       console.log(err);
     })
@@ -136,8 +135,8 @@ class App extends Component {
               path="/wishlistsCreate"
               render={
                 () => (this.state.auth)
-                ? <WishlistCreate />
-                : <WishlistCreate handleWishlistSubmit={this.handleWishlistSubmit} />
+                ? <WishlistCreate handleWishlistSubmit={this.handleWishlistSubmit} />
+                : <Redirect to="/wishlists"/>
               }
             />
             <Route component={NotFoundPage} />
