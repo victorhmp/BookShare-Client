@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 class WishlistCreate extends React.Component {
     constructor(){
@@ -42,7 +42,7 @@ class WishlistCreate extends React.Component {
                             onChange={this.handleChange}
                         />
                         <div className="button-container">
-                            <button className="form-button"><Link to="/wishlists">Create!</Link></button>                            
+                            <button className="form-button">Create!</button>                            
                         </div>
                     </form>
                 </div>
