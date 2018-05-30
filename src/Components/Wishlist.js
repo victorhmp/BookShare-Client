@@ -31,7 +31,7 @@ class Wishlist extends React.Component {
     return (
       <section id="wishlists">
         <div className="section-wrapper">
-        <NavLink to={this.props.loggedIn ? "/wishlists" : "/wishlistsCreate"} exact={true}>New Wishlist</NavLink>
+        <NavLink to={"/wishlistsCreate"} exact={true}>New Wishlist</NavLink>
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
             return (
