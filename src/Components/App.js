@@ -12,7 +12,7 @@ import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 import Dashboard from './Dashboard';
 import Wishlist from './Wishlist';
-import WishlistCreate from './WishCreate';
+import WishlistCreate from './WishlistCreate';
 
 class App extends Component {
   constructor() {
