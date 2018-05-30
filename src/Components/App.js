@@ -132,6 +132,14 @@ class App extends Component {
                 : <Redirect to="/" />
               }
             />
+            <Route 
+              path="/wishlistsCreate"
+              render={
+                () => (this.state.auth)
+                ? <WishlistCreate />
+                : <Redirect to="/" />
+              }
+            />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
