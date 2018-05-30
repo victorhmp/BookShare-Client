@@ -32,10 +32,13 @@ class Dashboard extends React.Component {
     return (
       <section id="dashboard">
         <div className="section-wrapper">
+          <div className="button-container">
+            <button className="btn-lg btn-orange">Anunciar livro</button>
+          </div>
           {(this.state.feedLoaded) 
           ? this.state.myFeed.map(adv => {
             return (
-              <CardAdvertisement adv={adv} />
+              <CardAdvertisement key={adv.id} adv={adv} />
             );
           })
           : <p>Loading...</p>
