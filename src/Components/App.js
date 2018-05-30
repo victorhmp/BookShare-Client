@@ -74,6 +74,24 @@ class App extends Component {
     }).catch((err) => console.log(err));
   }
 
+  handleWishlistSubmit(e, data) {
+    e.preventDefault();
+    axios.post(`http://localhost:3000/wishlists`, JSON.stringify({
+      user: data,
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then((response) => {
+      Auth.authenticateToken(response.data.token);
+      this.setState({
+        auth: Auth.isUserAuthenticated(),
+      });
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
