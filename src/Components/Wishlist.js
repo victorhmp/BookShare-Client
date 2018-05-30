@@ -37,6 +37,9 @@ class Wishlist extends React.Component {
               <div key={wishlist.id}>
                 <h1>{wishlist.name}</h1>
                 <p>{wishlist.description}</p>
+                <form className="delete-form" onSubmit={(e) => this.props.handleWishlistDelete(e, wishlist.id)}>
+                  <button className="delete-button">Delete!</button>
+                </form>
               </div>
             );
           })
