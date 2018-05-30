@@ -4,8 +4,8 @@ class WishlistCreate extends React.Component {
     constructor(){
         super();
         this.state = {
-            name: "",
-            description: "",
+            name: '',
+            description: '',
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -22,26 +22,26 @@ class WishlistCreate extends React.Component {
         return(
             <section id="header">
                 <div className="section-wrapper-form">
-                    <span class="createWishlist-title">Create Wishlist</span>
-                    <form class="createWishlist-form" onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
+                    <span className="wishlist-title">Create Wishlist</span>
+                    <form className="wishlist-form" onSubmit={(e) => this.props.handleWishlistSubmit(e, this.state)}>
                         <input
-                            class="input"
+                            className="input"
                             type="text"
-                            name="nameWishlist"
+                            name="name"
                             placeholder="Name"
                             value={this.state.name}
                             onChange={this.handleChange}
                         />
                         <input
-                            class="input"
-                            type="textarea"
+                            className="input"
+                            type="text"
                             name="description"
                             placeholder="Description"
                             value={this.state.description}
                             onChange={this.handleChange}
                         />
-                        <div class="button-container">
-                            <button class="form-button">Create!</button>
+                        <div className="button-container">
+                            <button className="form-button">Create!</button>
                         </div>
                     </form>
                 </div>
