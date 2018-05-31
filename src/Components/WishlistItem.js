@@ -6,20 +6,20 @@ import Auth from '../Modules/Auth';
 class WishlistItem extends React.Component{
   constructor(){
     super();
-      this.state = {
-        myItem: null,
-        itemListLoaded: null,
-      }
+    this.state = {
+      myItem: null,
+      itemListLoaded: null,
+    }
   }
 
   componentDidMount(){
-    axios.get('http://localhost:3000/wishlist_items', {
+    axios.get('http://localhost:3000/wishlist_items/wishlist/' + this.props.wishlist.id, {
       headers:{
         token: Auth.getToken(),
         'Authorization' : `Token ${Auth.getToken()}`,
       }
     }).then((response) => {
-    console.log(response.data);
+    console.log(this.props.wishlist.id);
       this.setState({
         myItem: response.data,
         itemListLoaded: true
@@ -34,11 +34,13 @@ class WishlistItem extends React.Component{
           {(this.state.itemListLoaded)
           ? this.state.myItem.map(itm => {
             return(
-                <div key={itm.id}>
-                <h1>Livro: {itm.book_title}</h1>
-                <p>Autor: {itm.book_author}</p>
-                <p>Editora: {itm.book_publication}</p>
-              </div>
+                <div key={itm.id}>                  
+                  <li>
+                    <p>Livro: {itm.book_title}</p>
+                    <p>Autor: {itm.book_author}</p>
+                    <p>Editora: {itm.book_publication}</p>
+                  </li>
+                </div>
             );
           })
           : <p>Loading...</p>
