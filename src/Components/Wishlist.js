@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Route} from 'react-router-dom';
 
 import Auth from '../Modules/Auth';
+import WishlistItem from './WishlistItem';
 
 class Wishlist extends React.Component {
   constructor() {
@@ -40,6 +41,7 @@ class Wishlist extends React.Component {
                 <form className="delete-form" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
                   <button className="delete-button">Delete!</button>
                 </form>
+                <WishlistItem wishlist = {wishlist}/>
               </div>
             );
           })
