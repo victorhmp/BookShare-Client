@@ -14,6 +14,7 @@ import Dashboard from './Dashboard';
 import Wishlist from './Wishlist';
 import WishlistCreate from './WishlistCreate';
 import WishlistItem from './WishlistItem';
+import WishlistItemCreate from './WishlistItemCreate';
 
 class App extends Component {
   constructor() {
@@ -160,6 +161,14 @@ class App extends Component {
               render={
                 () => (this.state.auth)
                 ? <WishlistItem />
+                : <Redirect to="/wishlists"/>
+              }
+            />
+            <Route 
+              path="/wishlistItemCreate"
+              render={
+                () => (this.state.auth)
+                ? <WishlistItemCreate />
                 : <Redirect to="/wishlists"/>
               }
             />
