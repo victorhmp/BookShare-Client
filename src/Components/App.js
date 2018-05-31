@@ -94,7 +94,7 @@ class App extends Component {
       console.log(err);
     })
   }
-
+  
   handleWishlistDelete(data) {
     axios.delete('http://localhost:3000/wishlists/' + data, {
       headers: {
