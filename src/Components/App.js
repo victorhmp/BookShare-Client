@@ -28,6 +28,7 @@ class App extends Component {
     this.handleWishlistSubmit = this.handleWishlistSubmit.bind(this);
     this.handleWishlistDelete = this.handleWishlistDelete.bind(this);
     this.handleWishlistItemSubmit = this.handleWishlistItemSubmit.bind(this);
+    this.handleWishlistItemDelete = this.handleWishlistItemDelete.bind(this);
   }
 
   handleRegisterSubmit(e, data) {
@@ -129,6 +130,20 @@ class App extends Component {
     })
   }
 
+  handleWishlistItemDelete(data) {
+    axios.delete('http://localhost:3000/wishlist_items/' + data, {
+      headers: {
+        wishlist_item: data,
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
+      }
+    }).then(response => {
+      console.log(response);   
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -163,7 +178,7 @@ class App extends Component {
               path="/wishlists"
               render={
                 () => (this.state.auth)
-                ? <Wishlist handleWishlistDelete={this.handleWishlistDelete}/>
+                ? <Wishlist handleWishlistDelete={this.handleWishlistDelete} handleWishlistItemDelete={this.handleWishlistItemDelete}/>
                 : <Redirect to="/" />
               }
             />
@@ -179,7 +194,7 @@ class App extends Component {
               path="/wishlistItems"
               render={
                 () => (this.state.auth)
-                ? <WishlistItem />
+                ? <WishlistItem/>
                 : <Redirect to="/wishlists"/>
               }
             />
