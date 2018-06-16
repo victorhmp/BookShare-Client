@@ -7,6 +7,7 @@ class WishlistItemCreate extends React.Component {
             book_title: '',
             book_author: '',
             book_publication: '',
+            wishlist_id: this.props,
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -19,8 +20,8 @@ class WishlistItemCreate extends React.Component {
         });
     }
 
-    render(){
-        return(
+    render(){    
+        this.state.wishlist_id = this.props.wishlist.match.params.wishlistId;        return(
             <section id="header">
                 <div className="section-wrapper-form">
                     <span className="wishlistItem-title">Create Wishlist Item</span>
