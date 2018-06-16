@@ -11,7 +11,7 @@ class Wishlist extends React.Component {
     this.state = {
       myWishlists: null,
       wishlistsLoaded: false,
-    }
+    }    
   }
 
   componentDidMount() {
@@ -43,10 +43,10 @@ class Wishlist extends React.Component {
               <div key={wishlist.id}>
                 <h1><Link to={'/wishlistItemCreate/' + wishlist.id}>{wishlist.name}</Link></h1>
                 <p>{wishlist.description}</p>
-                <form className="delete-form" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
-                  <button className="delete-button">Delete!</button>
+                <form className="deleteWishlist-form" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
+                  <button className="deleteWishlist-button">Delete!</button>
                 </form>
-                <WishlistItem wishlist = {wishlist}/>
+                <WishlistItem wishlist = {wishlist} handleWishlistItemDelete = {this.props.handleWishlistItemDelete}/>                
               </div>
             );
           })
