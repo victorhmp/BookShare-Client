@@ -27,6 +27,7 @@ class App extends Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.handleWishlistSubmit = this.handleWishlistSubmit.bind(this);
     this.handleWishlistDelete = this.handleWishlistDelete.bind(this);
+    this.handleWishlistItemSubmit = this.handleWishlistItemSubmit.bind(this);
   }
 
   handleRegisterSubmit(e, data) {
@@ -110,6 +111,24 @@ class App extends Component {
     })
   }
 
+  handleWishlistItemSubmit(e, data){
+    e.preventDefault();
+    console.log(data);
+    axios.post('http://localhost:3000/wishlist_items', JSON.stringify({
+    wishlist_item: data,}), 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
+      }
+    }).then((response) => {
+      console.log(response);      
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -165,10 +184,10 @@ class App extends Component {
               }
             />
             <Route 
-              path="/wishlistItemCreate"
+              path="/wishlistItemCreate/:wishlistId" 
               render={
-                () => (this.state.auth)
-                ? <WishlistItemCreate />
+                (match) => (this.state.auth)
+                ? <WishlistItemCreate handleWishlistItemSubmit={this.handleWishlistItemSubmit} wishlist={match}/>
                 : <Redirect to="/wishlists"/>
               }
             />
