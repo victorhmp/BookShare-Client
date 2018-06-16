@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {NavLink, Route} from 'react-router-dom';
+import {NavLink, Route, Link} from 'react-router-dom';
 
 import Auth from '../Modules/Auth';
 import WishlistItem from './WishlistItem';
@@ -32,11 +32,16 @@ class Wishlist extends React.Component {
     return (
       <section id="wishlists">
         <div className="section-wrapper">
+          <div className="button-container">
+            <button className="form-button">
+              <NavLink to={"/wishlistsCreate"}>New Wishlist</NavLink>
+            </button>            
+          </div>  
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
             return (
               <div key={wishlist.id}>
-                <h1>{wishlist.name}</h1>
+                <h1><Link to={'/wishlistItemCreate/' + wishlist.id}>{wishlist.name}</Link></h1>
                 <p>{wishlist.description}</p>
                 <form className="delete-form" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
                   <button className="delete-button">Delete!</button>
@@ -46,12 +51,7 @@ class Wishlist extends React.Component {
             );
           })
           : <p>Loading...</p>
-          }
-          <div className="button-container">
-            <button className="form-button">
-              <NavLink to={"/wishlistsCreate"} exact={true}>New Wishlist</NavLink>
-            </button>            
-          </div>          
+          }                    
         </div>
       </section>
     );
