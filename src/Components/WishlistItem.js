@@ -40,6 +40,9 @@ class WishlistItem extends React.Component{
                     <p>Autor: {itm.book_author}</p>
                     <p>Editora: {itm.book_publication}</p>
                   </li>
+                  <form className="deleteWishlistItem-form" onSubmit={(e) => this.props.handleWishlistItemDelete(itm.id)}>
+                    <button className="deleteWishlistItem-button">Delete WishItem!</button>
+                  </form>
                 </div>
             );
           })
