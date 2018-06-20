@@ -13,6 +13,8 @@ import LandingPage from './LandingPage';
 import Dashboard from './Dashboard';
 import Wishlist from './Wishlist';
 
+import CreateAdvertisement from './CreateAdvertisement';
+
 class App extends Component {
   constructor() {
     super();
@@ -112,6 +114,7 @@ class App extends Component {
                 : <Redirect to="/" />
               }
             />
+            <Route component={CreateAdvertisement} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
