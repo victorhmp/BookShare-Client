@@ -16,6 +16,7 @@ import WishlistCreate from './WishlistCreate';
 import WishlistUpdate from './WishlistUpdate';
 import WishlistItem from './WishlistItem';
 import WishlistItemCreate from './WishlistItemCreate';
+import WishlistItemUpdate from './WishlistItemUpdate';
 
 class App extends Component {
   constructor() {
@@ -30,6 +31,7 @@ class App extends Component {
     this.handleWishlistUpdate = this.handleWishlistUpdate.bind(this);
     this.handleWishlistDelete = this.handleWishlistDelete.bind(this);
     this.handleWishlistItemSubmit = this.handleWishlistItemSubmit.bind(this);
+    this.handleWishlistItemUpdate = this.handleWishlistItemUpdate.bind(this);
     this.handleWishlistItemDelete = this.handleWishlistItemDelete.bind(this);
   }
 
@@ -135,6 +137,24 @@ class App extends Component {
     e.preventDefault();
     console.log(data);
     axios.post('http://localhost:3000/wishlist_items', JSON.stringify({
+    wishlist_item: data,}), 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
+      }
+    }).then((response) => {
+      console.log(response);      
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  handleWishlistItemUpdate(e, data, id){
+    e.preventDefault();
+    console.log(data);
+    axios.put('http://localhost:3000/wishlist_items/' + id, JSON.stringify({
     wishlist_item: data,}), 
     {
       headers: {
