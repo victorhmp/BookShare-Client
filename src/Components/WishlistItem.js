@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 import Auth from '../Modules/Auth';
 
@@ -43,6 +44,7 @@ class WishlistItem extends React.Component{
                   <form className="deleteWishlistItem-form" onSubmit={(e) => this.props.handleWishlistItemDelete(itm.id)}>
                     <button className="deleteWishlistItem-button">Delete WishItem!</button>
                   </form>
+                  <Link to={'wishlistItemsUpdate/' + this.props.wishlist.id + '/' + itm.id}>Update!</Link>
                 </div>
             );
           })
