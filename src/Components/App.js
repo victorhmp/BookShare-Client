@@ -13,6 +13,7 @@ import LandingPage from './LandingPage';
 import Dashboard from './Dashboard';
 import Wishlist from './Wishlist';
 import WishlistCreate from './WishlistCreate';
+import WishlistUpdate from './WishlistUpdate';
 import WishlistItem from './WishlistItem';
 import WishlistItemCreate from './WishlistItemCreate';
 
@@ -26,6 +27,7 @@ class App extends Component {
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleWishlistSubmit = this.handleWishlistSubmit.bind(this);
+    this.handleWishlistUpdate = this.handleWishlistUpdate.bind(this);
     this.handleWishlistDelete = this.handleWishlistDelete.bind(this);
     this.handleWishlistItemSubmit = this.handleWishlistItemSubmit.bind(this);
     this.handleWishlistItemDelete = this.handleWishlistItemDelete.bind(this);
@@ -84,6 +86,23 @@ class App extends Component {
   handleWishlistSubmit(e, data) {
     e.preventDefault();
     axios.post('http://localhost:3000/wishlists', JSON.stringify({
+      wishlist: data,
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
+      }
+    }).then((response) => {
+      console.log(response);      
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  handleWishlistUpdate(e, data, id){
+    e.preventDefault();
+    axios.put('http://localhost:3000/wishlists/' + id, JSON.stringify({
       wishlist: data,
     }), {
       headers: {
@@ -178,7 +197,9 @@ class App extends Component {
               path="/wishlists"
               render={
                 () => (this.state.auth)
-                ? <Wishlist handleWishlistDelete={this.handleWishlistDelete} handleWishlistItemDelete={this.handleWishlistItemDelete}/>
+                ? <Wishlist handleWishlistDelete={this.handleWishlistDelete} 
+                    handleWishlistItemDelete={this.handleWishlistItemDelete}
+                    handleWishlistUpdate={this.handleWishlistUpdate}/>
                 : <Redirect to="/" />
               }
             />
@@ -191,6 +212,14 @@ class App extends Component {
               }
             />
             <Route 
+              path="/wishlistsUpdate/:wishlistId"
+              render={
+                (match) => (this.state.auth)
+                ? <WishlistUpdate handleWishlistUpdate={this.handleWishlistUpdate} wishlist={match}/>
+                : <Redirect to="/wishlists"/>
+              }
+            />
+            <Route 
               path="/wishlistItems"
               render={
                 () => (this.state.auth)
@@ -199,7 +228,7 @@ class App extends Component {
               }
             />
             <Route 
-              path="/wishlistItemCreate/:wishlistId" 
+              path="/wishlistItemsCreate/:wishlistId" 
               render={
                 (match) => (this.state.auth)
                 ? <WishlistItemCreate handleWishlistItemSubmit={this.handleWishlistItemSubmit} wishlist={match}/>
