@@ -255,6 +255,15 @@ class App extends Component {
                 : <Redirect to="/wishlists"/>
               }
             />
+            <Route 
+              path="/wishlistItemsUpdate/:wishlistId/:wishlistItemId" 
+              render={
+                (match) => (this.state.auth)
+                ? <WishlistItemUpdate handleWishlistItemUpdate={this.handleWishlistItemUpdate} 
+                    match={match}/>
+                : <Redirect to="/wishlists"/>
+              }
+            />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
