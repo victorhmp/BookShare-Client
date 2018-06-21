@@ -1,7 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 
-import Auth from '../Modules/Auth';
+//import Auth from '../Modules/Auth';
 class WishlistUpdate extends React.Component {
     constructor(){
       super();
