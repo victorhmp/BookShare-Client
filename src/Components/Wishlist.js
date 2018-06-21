@@ -41,7 +41,7 @@ class Wishlist extends React.Component {
           ? this.state.myWishlists.map(wishlist => {
             return (
               <div key={wishlist.id}>
-                <h1><Link to={'/wishlistItemCreate/' + wishlist.id}>{wishlist.name}</Link></h1>
+                <h1><Link to={'/wishlistItemsCreate/' + wishlist.id}>{wishlist.name}</Link></h1>
                 <p>{wishlist.description}</p>
                 <form className="deleteWishlist-form" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
                   <button className="deleteWishlist-button">Delete!</button>
