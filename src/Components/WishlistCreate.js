@@ -1,8 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-=======
 // import {Redirect} from 'react-router-dom';
->>>>>>> a9f30b1f25e7b160246bb643867dfe34d9516aae
 
 class WishlistCreate extends React.Component {
     constructor(){
