@@ -33,14 +33,14 @@ class Wishlist extends React.Component {
       <section id="wishlists">
         <div className="section-wrapper">
           <div className="button-container">
-            <NavLink id="new-wish" to="/wishlistsCreate">
+            <NavLink to="/wishlistsCreate">
               <button className="form-button">New Wishlist</button>
             </NavLink>                       
           </div>  
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
             return (
-              <div key={wishlist.id}>
+              <div className="wish-title" key={wishlist.id}>
                 <h1><Link to={'/wishlistItemsCreate/' + wishlist.id}>{wishlist.name}</Link></h1>
                 <p>{wishlist.description}</p>
                 <form className="deleteWishlist-form" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>

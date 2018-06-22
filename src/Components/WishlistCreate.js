@@ -1,6 +1,5 @@
 import React from 'react';
-// import {Redirect} from 'react-router-dom';
-import NavLink from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class WishlistCreate extends React.Component {
     constructor(){
@@ -8,6 +7,7 @@ class WishlistCreate extends React.Component {
       this.state = {
         name: '',
         description: '',
+        submitted: false,
       }
       this.handleChange = this.handleChange.bind(this);
     }
@@ -20,12 +20,19 @@ class WishlistCreate extends React.Component {
       });
     }
 
+    formSubmit(e) {
+      e.preventDefault();
+      this.setState({ submitted: true });
+    }
+
     render(){
+      const { submitted } = this.state;
+
       return(
         <section id="header">
           <div className="section-wrapper-form">
             <span className="wishlist-title">Create Wishlist</span>
-            <form className="wishlist-form" onSubmit={(e) => this.props.handleWishlistSubmit(e, this.state)}>
+            <form className="wishlist-form" onSubmit={(e) => { this.props.handleWishlistSubmit(e, this.state); this.formSubmit(e) }}>
               <input
                 className="input"
                 type="text"
@@ -43,11 +50,12 @@ class WishlistCreate extends React.Component {
                 onChange={this.handleChange}
               />
               <div className="button-container">
-                <NavLink to="/wishlists">
-                  <button className="form-button">Create!</button>
-                </NavLink>                            
+                <button type="submit" className="form-button">Create!</button>
               </div>
             </form>
+            {submitted && (
+              <Redirect to="/wishlists"/>
+            )}
           </div>
         </section>
       );
