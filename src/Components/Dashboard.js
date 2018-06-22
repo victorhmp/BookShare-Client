@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
               </div>
             );
           })
-          : <p>Loading...</p>
+          : <div class="loader" />
           }
         </div>
       </section>

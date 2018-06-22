@@ -28,9 +28,9 @@ class Wishlist extends React.Component {
     }).catch((err) => console.log(err));
   }
 
-  render() {
+  render() {    
     return (
-      <section id="wishlists">
+      <body id="wishlist-body">
         <div className="section-wrapper">
           <div className="button-container">
             <NavLink to="/wishlistsCreate">
@@ -40,21 +40,25 @@ class Wishlist extends React.Component {
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
             return (
-              <div className="wish-title" key={wishlist.id}>
+              <div className="wishlist" key={wishlist.id}>
                 <h1><Link to={'/wishlistItemsCreate/' + wishlist.id}>{wishlist.name}</Link></h1>
-                <p>{wishlist.description}</p>
-                <form className="deleteWishlist-form" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
-                  <button className="deleteWishlist-button">Delete!</button>
-                </form> 
-                <Link to={'/wishlistsUpdate/' + wishlist.id}>Update!</Link>
-                <WishlistItem wishlist = {wishlist} handleWishlistItemDelete = {this.props.handleWishlistItemDelete}/>                
+                <p id="wish-desc">{wishlist.description}</p>
+                <div id="wishlist-btns">
+                  <form className="delWLform" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
+                    <button type="submit" className="form-button">Delete this Wishlist</button>
+                  </form> 
+                  <NavLink to={'/wishlistsUpdate/' + wishlist.id}>
+                    <button type="submit" className="form-button">Update this Wishlist</button>
+                  </NavLink>  
+                </div>
+                <WishlistItem wishlist = {wishlist} handleWishlistItemDelete = {this.props.handleWishlistItemDelete}/>                         
               </div>
             );
           })
-          : <p>Loading...</p>
+          : <div class="loader" />
           }                    
         </div>
-      </section>
+      </body>
     );
   }
 }

@@ -1,7 +1,62 @@
-#wishlists{
+#wishlist-body{
     background-color: $swab-blue;
 }
 
-.wish-title{
+.loader {
+    border: 1em solid $off-white;
+    border-radius: 50%;
+    border-top: 1em solid $swab-orange;
+    width: 2.7em;
+    height: 2.7em;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
+
+.wish{
+
+}
+
+.wishlist-title{
+    color: $phantom-white;
+    background-color: $swab-orange;
+    width: 30vw;
+    height: 7.7vh;
+    text-align: center;
+    font-size: 1.75em;
+    border-top-left-radius: 0.6em;
+    border-top-right-radius: 0.6em;   
+    padding-top: 2vh;
+    font-weight: bold;
+}
+
+.wishlist-form{
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content: center;    
+    align-items: center;
+    padding-top: 1em;
+
+    .input{
+        width: 18vw;    
+        height: 4vh;   
+        background-color: #e6e6e6;
+        padding-left: .4em;
+        border: .1em solid transparent;
+        margin: .2em 0;
+
+        &:focus {
+            border-color: #2c2c2c;
+        }
+    }
 }

@@ -31,7 +31,7 @@ class WishlistCreate extends React.Component {
       return(
         <section id="header">
           <div className="section-wrapper-form">
-            <span className="wishlist-title">Create Wishlist</span>
+            <span className="wishlist-title">Create a new Wishlist</span>
             <form className="wishlist-form" onSubmit={(e) => { this.props.handleWishlistSubmit(e, this.state); this.formSubmit(e) }}>
               <input
                 className="input"
@@ -41,7 +41,8 @@ class WishlistCreate extends React.Component {
                 value={this.state.name}
                 onChange={this.handleChange}
               />
-              <input
+              <textarea
+                rows="4"
                 className="input"
                 type="text"
                 name="description"
