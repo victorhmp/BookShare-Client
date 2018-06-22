@@ -33,9 +33,9 @@ class Wishlist extends React.Component {
       <section id="wishlists">
         <div className="section-wrapper">
           <div className="button-container">
-            <button className="form-button">
-              <NavLink to={"/wishlistsCreate"}>New Wishlist</NavLink>
-            </button>            
+            <NavLink id="new-wish" to="/wishlistsCreate">
+              <button className="form-button">New Wishlist</button>
+            </NavLink>                       
           </div>  
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
