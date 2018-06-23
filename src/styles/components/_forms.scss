@@ -1,0 +1,81 @@
+.basic-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: $navbar-maxheight + 3vh;
+  padding-bottom: $navbar-maxheight;
+}
+
+.basic-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  padding: 2rem;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  width: 50vw;
+
+  &__title {
+    color: $swab-orange;
+    font-size: 2rem;
+  }
+
+  &__instructions {
+    font-size: .8rem;
+    padding-bottom: 5vh;
+  }
+
+  &__input {
+
+    background-color: transparent;
+    border: none;
+    border-bottom: .1rem solid $swab-orange;
+    width: 30vw;
+
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  &__textarea {
+    background-color: transparent;
+    border: .1rem solid $swab-orange;
+    border-radius: 5px;
+    padding: 1rem;
+
+    height: 30vh;
+    width: 30vw;
+
+    font-size: 1rem;
+    text-align: justify;
+  }
+
+  &__btn {
+    align-items: center;
+    justify-content: center;
+
+    background-color: $swab-orange;
+    border: .1em solid $swab-orange;
+    border-radius: 1rem;
+    color: $phantom-white;
+    font-size: 1rem;
+
+    width: 15vw;
+    height: 5vh;
+
+    &:hover {
+      background-color: $phantom-white;
+      color: $swab-orange;
+    }
+  }
+}
+
+.basic-form > input, textarea {
+  margin-bottom: 3vh;
+  padding-bottom: 1vh;
+}

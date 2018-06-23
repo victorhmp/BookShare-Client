@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
+import {Link} from 'react-router-dom';
+
 import Auth from '../Modules/Auth';
+import CardAdvertisement from './CardAdvertisement';
 
 class Dashboard extends React.Component {
   constructor() {
@@ -31,16 +34,13 @@ class Dashboard extends React.Component {
     return (
       <section id="dashboard">
         <div className="section-wrapper">
+          <div className="button-container">
+            <Link to='/new-advertisement'> <button className="btn-lg btn-orange">Anunciar livro</button> </Link>
+          </div>
           {(this.state.feedLoaded) 
           ? this.state.myFeed.map(adv => {
             return (
-              <div key={adv.id}>
-                <h1>Livro: {adv.book_title}</h1>
-                <p>Autor: {adv.book_author}</p>
-                <p>Editora: {adv.book_publication}</p>
-                <p>Comentário do Usuário: {adv.comment}</p>
-                <p>Por: {adv.user.username}</p>
-              </div>
+              <CardAdvertisement key={adv.id} adv={adv} />
             );
           })
           : <div class="loader" />
