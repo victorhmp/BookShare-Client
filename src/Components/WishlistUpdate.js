@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 //import axios from 'axios';
 
 //import Auth from '../Modules/Auth';
@@ -8,7 +9,8 @@ class WishlistUpdate extends React.Component {
       this.id = null;
       this.state = {     
         name: '',
-        description: '', 
+        description: '',
+        submitted: false, 
       }
       this.handleChange = this.handleChange.bind(this);  
     }
@@ -39,7 +41,13 @@ class WishlistUpdate extends React.Component {
       }).catch((err) => console.log(err));
     }*/
 
-    render(){       
+    formSubmit(e) {
+      e.preventDefault();
+      this.setState({ submitted: true });
+    }
+
+    render(){        
+      const { submitted } = this.state;   
       /*if(!this.state.wishlistLoaded){
         return false;
       }*/
@@ -47,7 +55,7 @@ class WishlistUpdate extends React.Component {
         <section id="header">
           <div className="section-wrapper-form">
             <span className="wishlist-title">Update Wishlist</span>
-              <form className="wishlist-form" onSubmit={(e) => this.props.handleWishlistUpdate(e, this.state, this.id)}>
+              <form className="wishlist-form" onSubmit={(e) => { this.props.handleWishlistUpdate(e, this.state, this.id); this.formSubmit(e) }}>
                 <input
                   className="input"
                   type="text"
@@ -56,7 +64,8 @@ class WishlistUpdate extends React.Component {
                   value={this.state.name}
                   onChange={this.handleChange}
                 />
-                <input
+                <textarea
+                  rows="4"
                   className="input"
                   type="text"
                   name="description"
@@ -65,13 +74,12 @@ class WishlistUpdate extends React.Component {
                   onChange={this.handleChange}
                 />
                 <div className="button-container">
-                  <button className="form-button">Update!</button>                            
+                  <button type="submit" className="form-button">Update Wishlist!</button>                            
                 </div>
               </form>
-            );
-            })
-            : <p>Loading...</p>
-            }
+              {submitted && (
+                <Redirect to="/wishlists" />
+              )}
           </div>
         </section>     
       )      

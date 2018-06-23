@@ -51,7 +51,7 @@ class WishlistCreate extends React.Component {
                 onChange={this.handleChange}
               />
               <div className="button-container">
-                <button type="submit" className="form-button">Create!</button>
+                <button type="submit" className="form-button">Create Wishlist!</button>
               </div>
             </form>
             {submitted && (
