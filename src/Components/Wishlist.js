@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {NavLink, Link} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import Auth from '../Modules/Auth';
 import WishlistItem from './WishlistItem';
@@ -30,35 +30,43 @@ class Wishlist extends React.Component {
 
   render() {    
     return (
-      <body id="wishlist-body">
+      <span><section id="wish-header">
         <div className="section-wrapper">
+          <h1 id="wish-title">Your Wishlists</h1>
           <div className="button-container">
             <NavLink to="/wishlistsCreate">
               <button className="form-button">New Wishlist</button>
             </NavLink>                       
           </div>  
+        </div>
+      </section>
+      <section id="wishSect">
+        <div className="WL-container"> 
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
             return (
               <div className="wishlist" key={wishlist.id}>
-                <h1><Link to={'/wishlistItemsCreate/' + wishlist.id}>{wishlist.name}</Link></h1>
+                <center><h1 id="wish">{wishlist.name}</h1></center>
                 <p id="wish-desc">{wishlist.description}</p>
                 <div id="wishlist-btns">
-                  <form className="delWLform" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
-                    <button type="submit" className="form-button">Delete this Wishlist</button>
-                  </form> 
+                  <NavLink to={'/wishlistItemsCreate/' + wishlist.id}>
+                    <button type="submit" className="form-button">Add to this Wishlist</button>
+                  </NavLink>
                   <NavLink to={'/wishlistsUpdate/' + wishlist.id}>
                     <button type="submit" className="form-button">Update this Wishlist</button>
                   </NavLink>  
-                </div>
+                  <form className="delWLform" onSubmit={(e) => this.props.handleWishlistDelete(wishlist.id)}>
+                    <button type="submit" className="form-button" >Delete this Wishlist</button>
+                  </form> 
+                </div>                                
                 <WishlistItem wishlist = {wishlist} handleWishlistItemDelete = {this.props.handleWishlistItemDelete}/>                         
               </div>
             );
           })
-          : <div class="loader" />
+          : <div id="loader-back"><center><div class="loader" /></center></div>
           }                    
         </div>
-      </body>
+      </section></span>
     );
   }
 }

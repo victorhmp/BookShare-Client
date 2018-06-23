@@ -1,7 +1,40 @@
-#wishlist-body{
+#wish-header {
+    background-color:$swab-blue;
+    color: #fff;
+    height: 24em;    
+    width: 100vw;    
+}
+#wishSect {
     background-color: $swab-blue;
 }
-
+#loader-back {
+    background-color: $swab-blue;
+}
+#wishlist-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#wish-title {
+    font-size: 2.7em;
+    font-family: "Impact", Times, serif;
+}
+.wishlist {
+    background-color: $cream;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: $off-black;
+    border-width: .3em;
+}
+#wish-desc {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.WL-container {
+    display: flex;
+    flex-direction: column;
+}
 .loader {
     border: 1em solid $off-white;
     border-radius: 50%;
@@ -18,11 +51,6 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-
-.wish{
-
 }
 
 .wishlist-title{
