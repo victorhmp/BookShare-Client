@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import Auth from '../Modules/Auth';
 
@@ -31,24 +31,26 @@ class WishlistItem extends React.Component{
   render(){
     return(
       <section id="itemList">
-        <div className="section-wrapper">
+        <div className="item-section-wrapper">
           {(this.state.itemListLoaded)
           ? this.state.myItem.map(itm => {
             return(
-                <div key={itm.id}>                  
-                  <li>
-                    <p>Livro: {itm.book_title}</p>
-                    <p>Autor: {itm.book_author}</p>
-                    <p>Editora: {itm.book_publication}</p>
-                  </li>
-                  <form className="deleteWishlistItem-form" onSubmit={(e) => this.props.handleWishlistItemDelete(itm.id)}>
-                    <button className="deleteWishlistItem-button">Delete WishItem!</button>
+                <div id="item" key={itm.id}>  
+                    <p className="itemText"><u>Livro:</u> {itm.book_title}</p>
+                    <p className="itemText"><u>Autor:</u> {itm.book_author}</p>
+                    <p className="itemText"><u>Editora:</u> {itm.book_publication}</p>
+                  <div className="item-button-container">
+                  <form onSubmit={(e) => this.props.handleWishlistItemDelete(itm.id)}>
+                    <button className="form-button">Delete Item</button>
                   </form>
-                  <Link to={'wishlistItemsUpdate/' + this.props.wishlist.id + '/' + itm.id}>Update!</Link>
+                  <NavLink to={'/wishlistItemsUpdate/' + this.props.wishlist.id + '/' + itm.id}>
+                    <button className="form-button">Update Item</button>
+                  </NavLink>    
+                  </div>              
                 </div>
             );
           })
-          : <p>Loading...</p>
+          : <div id="loader-bg"><center><div class="loader" /></center></div>
           }
         </div>
       </section>

@@ -30,9 +30,9 @@ class Wishlist extends React.Component {
 
   render() {    
     return (
-      <span><section id="wish-header">
+      <span><section id="wishlist-header">
         <div className="section-wrapper">
-          <h1 id="wish-title">Your Wishlists</h1>
+          <h3 id="wishlistHeader-title">YOUR WISHLISTS</h3>
           <div className="button-container">
             <NavLink to="/wishlistsCreate">
               <button className="form-button">New Wishlist</button>
@@ -40,14 +40,14 @@ class Wishlist extends React.Component {
           </div>  
         </div>
       </section>
-      <section id="wishSect">
-        <div className="WL-container"> 
+      <section id="wishlist-section">
+        <div className="wishlist-container"> 
           {(this.state.wishlistsLoaded) 
           ? this.state.myWishlists.map(wishlist => {
             return (
               <div className="wishlist" key={wishlist.id}>
-                <center><h1 id="wish">{wishlist.name}</h1></center>
-                <p id="wish-desc">{wishlist.description}</p>
+                <center><h2>{wishlist.name}</h2></center>
+                <center><p id="wishlist-description">{wishlist.description}</p></center>
                 <div id="wishlist-btns">
                   <NavLink to={'/wishlistItemsCreate/' + wishlist.id}>
                     <button type="submit" className="form-button">Add to this Wishlist</button>
@@ -63,7 +63,7 @@ class Wishlist extends React.Component {
               </div>
             );
           })
-          : <div id="loader-back"><center><div class="loader" /></center></div>
+          : <div id="loader-bg"><center><div class="loader" /></center></div>
           }                    
         </div>
       </section></span>
