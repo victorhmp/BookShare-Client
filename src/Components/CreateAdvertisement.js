@@ -5,15 +5,50 @@ import axios from 'axios';
 class CreateAdvertisement extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.baseState = {
       book_title: '', 
       book_author: '',
       book_publication: '',
       comment: '', 
       status: 0
     };
+
+    this.state = this.baseState;
     this.handleChange = this.handleChange.bind(this);
     this.handleCreateAdvSubmit = this.handleCreateAdvSubmit.bind(this);
+    this.clearForm = this.clearForm.bind(this);
+    this.checkForm = this.checkForm.bind(this);
+  }
+
+  clearForm() {
+    this.setState(this.baseState);
+  }
+
+  checkForm() {
+    this.error = false;
+    this.error_msg = 'Preencha todos os campos obrigatórios:\n\n';
+
+    if (this.state.book_title === '') {
+      this.error_msg += 'Título do Livro\n';
+      this.error = true;
+    }
+
+    if (this.state.book_author === '') {
+      this.error_msg += 'Autor do Livro\n';
+      this.error = true;
+    }
+
+    if (this.state.book_publication === '') {
+      this.error_msg += 'Editora\n';
+      this.error = true;
+    }
+
+    if (this.error === true) {
+      alert(this.error_msg);
+      return false;
+    }
+
+    return true;
   }
 
   handleChange(e) {
@@ -27,6 +62,9 @@ class CreateAdvertisement extends React.Component {
 
   handleCreateAdvSubmit(e, data) {
     e.preventDefault();
+
+    if (!this.checkForm()) return;
+
     axios.post(`http://localhost:3000/advertisements`, JSON.stringify(data), {
       headers: {
         token: Auth.getToken(),
@@ -35,10 +73,11 @@ class CreateAdvertisement extends React.Component {
       }
     }).then(response => {
       console.log(response);
-      console.log("Anuncio feito com sucesso!");
+      alert("Anuncio feito com sucesso!");
+      this.clearForm();
     }).catch(err => {
       console.log(err);
-      console.log("Erro ao criar anúncio");
+      alert("Erro ao criar anúncio. Tente novamente.");
     })
   }
 
