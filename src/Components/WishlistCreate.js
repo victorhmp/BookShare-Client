@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class WishlistCreate extends React.Component {
     constructor(){
@@ -7,6 +7,7 @@ class WishlistCreate extends React.Component {
       this.state = {
         name: '',
         description: '',
+        submitted: false,
       }
       this.handleChange = this.handleChange.bind(this);
     }
@@ -19,12 +20,19 @@ class WishlistCreate extends React.Component {
       });
     }
 
+    formSubmit(e) {
+      e.preventDefault();
+      this.setState({ submitted: true });
+    }
+
     render(){
+      const { submitted } = this.state;
+
       return(
         <section id="header">
           <div className="section-wrapper-form">
-            <span className="wishlist-title">Create Wishlist</span>
-            <form className="wishlist-form" onSubmit={(e) => this.props.handleWishlistSubmit(e, this.state)}>
+            <span className="wishlist-title">Create a new Wishlist</span>
+            <form className="wishlist-form" onSubmit={(e) => { this.props.handleWishlistSubmit(e, this.state); this.formSubmit(e) }}>
               <input
                 className="input"
                 type="text"
@@ -33,7 +41,8 @@ class WishlistCreate extends React.Component {
                 value={this.state.name}
                 onChange={this.handleChange}
               />
-              <input
+              <textarea
+                rows="4"
                 className="input"
                 type="text"
                 name="description"
@@ -42,9 +51,12 @@ class WishlistCreate extends React.Component {
                 onChange={this.handleChange}
               />
               <div className="button-container">
-                <button className="form-button">Create!</button>                            
+                <button type="submit" className="form-button">Create Wishlist!</button>
               </div>
             </form>
+            {submitted && (
+              <Redirect to="/wishlists"/>
+            )}
           </div>
         </section>
       );

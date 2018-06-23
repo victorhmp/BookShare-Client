@@ -1,0 +1,107 @@
+#wishlist-header {
+    background-color:$swab-blue;
+    color: #fff;
+    height: 24em;    
+    width: 100vw;    
+} 
+#wishlist-section {
+    background-color: $swab-blue;
+}
+#wishlist-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#wishlistHeader-title {
+    font-size: 2em;
+    font-family: "Helvetica", sans-serif;
+}
+.wishlist {
+    color: white;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: $swab-orange;
+    border-right: .3em;
+    border-left: .3em;
+}
+#wishlist-description {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.wishlist-container {
+    display: flex;
+    flex-direction: column;
+}
+.loader {
+    border: 1em solid $off-white;
+    border-radius: 50%;
+    border-top: 1em solid $swab-orange;
+    width: 2.7em;
+    height: 2.7em;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+#loader-bg {
+    background-color: $swab-blue;
+}
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.item-section-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: $navbar-maxheight + 1vh;
+}
+#item {
+    background-color: $swab-blue;
+    border-radius: 1em;
+    background: linear-gradient(to bottom right, rgba(0, 183, 233, 0.300), $swab-blue);
+    margin: .25em;
+    .itemText {
+        margin-left: .2em;
+    }
+}
+.wishlist-title{
+    color: $phantom-white;
+    background-color: $swab-orange;
+    width: 30vw;
+    height: 7.7vh;
+    text-align: center;
+    font-size: 1.75em;
+    border-top-left-radius: 0.6em;
+    border-top-right-radius: 0.6em;   
+    padding-top: 2vh;
+    font-weight: bold;
+}
+.wishlist-form{
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content: center;    
+    align-items: center;
+    padding-top: 1em;
+
+    .input{
+        width: 18vw;    
+        height: 4vh;   
+        background-color: #e6e6e6;
+        padding-left: .4em;
+        border: .1em solid transparent;
+        margin: .2em 0;
+
+        &:focus {
+            border-color: #2c2c2c;
+        }
+    }
+}

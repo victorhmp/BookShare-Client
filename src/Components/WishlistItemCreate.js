@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class WishlistItemCreate extends React.Component {
     constructor(){
@@ -8,6 +9,7 @@ class WishlistItemCreate extends React.Component {
         book_author: '',
         book_publication: '',
         wishlist_id: null,
+        submitted: false,
       }
       this.handleChange = this.handleChange.bind(this);
     }
@@ -20,13 +22,20 @@ class WishlistItemCreate extends React.Component {
       });
     }
 
-    render(){    
-      this.state.wishlist_id = this.props.wishlist.match.params.wishlistId;        
+    formSubmit(e) {
+      e.preventDefault();
+      this.setState({ submitted: true });
+    }
+
+    render(){     
+      // this.setState({ wishlist_id: this.props.wishlist.match.params.wishlistId });    
+      this.state.wishlist_id = this.props.wishlist.match.params.wishlistId;  
+      const { submitted } = this.state;      
       return(
         <section id="header">
           <div className="section-wrapper-form">
-            <span className="wishlistItem-title">Create Wishlist Item</span>
-            <form className="wishlistItem-form" onSubmit={(e) => this.props.handleWishlistItemSubmit(e, this.state)}>
+            <span className="wishlist-title">Create a new Wishlist Item</span>
+            <form className="wishlist-form" onSubmit={(e) => { this.props.handleWishlistItemSubmit(e, this.state); this.formSubmit(e) }}>
               <input
                 className="input"
                 type="text"
@@ -52,9 +61,12 @@ class WishlistItemCreate extends React.Component {
                 onChange={this.handleChange}
               />
               <div className="button-container">
-                <button className="form-button">Create WishItem!</button>                            
+                <button type="submit" className="form-button">Create Item!</button>                            
               </div>
             </form>
+            {submitted && (
+              <Redirect to="/wishlists" />
+            )}
           </div>
         </section>
         );
