@@ -31,8 +31,10 @@ class Advertisement extends React.Component {
   }
 
   render() {
+    const MANAGE = 2;
+
     return (
-      <section id="dashboard">
+      <section id="my-advertisements">
         <div className="section-wrapper">
           <div className="button-container">
             <Link to='/new-advertisement'> <button className="btn-lg btn-orange">Anunciar livro</button> </Link>
@@ -40,7 +42,7 @@ class Advertisement extends React.Component {
           {(this.state.dataLoaded) 
           ? this.state.myAdv.map(adv => {
             return (
-              <AdvertisementCard key={adv.id} adv={adv} type="manage"/>
+              <AdvertisementCard key={adv.id} adv={adv} type={MANAGE} />
             );
           })
           : <div class="loader" />
