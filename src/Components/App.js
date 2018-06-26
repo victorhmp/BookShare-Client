@@ -20,6 +20,7 @@ import WishlistItemUpdate from './WishlistItemUpdate';
 
 import Advertisement from './Advertisement';
 import AdvertisementCreate from './AdvertisementCreate';
+import Profile from './Profile';
 
 class App extends Component {
   constructor() {
@@ -265,6 +266,15 @@ class App extends Component {
                 ? <WishlistItemUpdate handleWishlistItemUpdate={this.handleWishlistItemUpdate} 
                     match={match}/>
                 : <Redirect to="/wishlists"/>
+              }
+            />
+
+            <Route 
+              path="/profile" 
+              render={
+                () => (this.state.auth)
+                ? <Profile />
+                : <Redirect to="/"/>
               }
             />
 
