@@ -99,15 +99,19 @@ class AdvertisementCard extends React.Component {
               <p className='comment'> <b>Comentário:</b> {this.state.adv.comment}</p>
               <p className='created-at'> <b>Criado às:</b> {this.state.adv.created_at} </p>
               <p className='status'> <b>Status:</b> {this.formatStatus(this.state.adv.status)} </p>
-              <div className='card-adv__right-info'>
-                <button className="btn-lg btn-blue">Editar</button>
                 {this.state.adv.status === 'open' ? 
-                  <button className="btn btn-blue" onClick={this.closeAdv}>Fechar anúncio</button>
+                  <div className='card-adv__right-info'>
+                    <button className="btn-lg btn-blue">Editar</button>
+                    <button className="btn btn-blue" onClick={() => {if(window.confirm('Deseja fechar o anúncio?')) {this.closeAdv};}}>Fechar anúncio</button>
+                  </div>
                   :
-                  <button className="btn btn-disabled" onClick={this.closeAdv} disabled>Anúncio fechado</button>
+                  <div className='card-adv__right-info'>
+                    <button className="btn-lg btn-disabled" disabled>Editar</button>
+                    <button className="btn btn-disabled" disabled>Anúncio fechado</button>
+                  </div>
                 }
               </div>
-            </div>
+            
           </div>
         );
       
