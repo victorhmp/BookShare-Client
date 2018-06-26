@@ -14,6 +14,12 @@ class WishlistItemCreate extends React.Component {
       this.handleChange = this.handleChange.bind(this);
     }
 
+    componentDidMount() {
+      this.setState({
+        wishlist_id: this.props.wishlist.match.params.wishlistId
+      });
+    }
+
     handleChange(e){
       const name = e.target.name;
       const val = e.target.value;
@@ -29,7 +35,7 @@ class WishlistItemCreate extends React.Component {
 
     render(){     
       // this.setState({ wishlist_id: this.props.wishlist.match.params.wishlistId });    
-      this.state.wishlist_id = this.props.wishlist.match.params.wishlistId;  
+      // this.state.wishlist_id = this.props.wishlist.match.params.wishlistId;
       const { submitted } = this.state;      
       return(
         <section id="header">

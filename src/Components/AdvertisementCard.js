@@ -2,10 +2,6 @@ import React from 'react';
 import placeholder from '../images/placeholder.png'
 
 class AdvertisementCard extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return(
       (this.props.type === "feed") ? 

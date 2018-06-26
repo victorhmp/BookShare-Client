@@ -9,7 +9,6 @@ class WishlistItemUpdate extends React.Component {
         book_title: '',
         book_author: '',
         book_publication: '',
-        wishlist_id: null,
         submitted: false,
       }
       this.handleChange = this.handleChange.bind(this);
@@ -28,8 +27,7 @@ class WishlistItemUpdate extends React.Component {
       this.setState({ submitted: true });
     }
 
-    render(){     
-      this.state.wishlist_id = this.props.match.match.params.wishlistId;        
+    render(){           
       this.id = this.props.match.match.params.wishlistItemId;
       const { submitted } = this.state;   
       return(
