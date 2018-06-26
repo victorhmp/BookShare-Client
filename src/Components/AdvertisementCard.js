@@ -1,7 +1,71 @@
 import React from 'react';
+import axios from 'axios';
+
+import Auth from '../Modules/Auth';
+
 import placeholder from '../images/placeholder.png'
 
 class AdvertisementCard extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      adv: {
+        id: 0,
+        book_title: '', 
+        book_author: '',
+        book_publication: '',
+        comment: '', 
+        status: 0,
+        user: {
+          username: ''
+        }
+      }
+    }
+    this.closeAdv = this.closeAdv.bind(this);
+    this.formatStatus = this.formatStatus.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      adv: this.props.adv
+    });
+  }
+
+  formatStatus(status) {
+    switch(status) {
+      case 'open':
+        return 'Aberto'
+      case 'closed':
+        return 'Fechado'
+      default:
+        return 'Indefinido'
+    }
+  }
+
+  closeAdv(e) {
+    e.preventDefault();
+    this.url = 'http://localhost:3000/advertisements/close/';
+
+    axios.post(this.url, JSON.stringify({id: this.state.adv.id, advertisement: this.state.adv}), {
+      headers: {
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
+        'Content-Type': 'application/json',
+      }
+    }).then((response) => {
+      console.log(response.data);
+      alert('Anúncio fechado com sucesso');
+
+      this.setState({
+        adv: response.data.advertisement
+      });
+
+    }).catch((err) => {
+      console.log(err);
+      alert('Não foi possível fechar este anúncio. Tente novamente mais tarde.');
+    });
+  }
+
   render() {
     const FEED = 1;
     const MANAGE = 2;
@@ -9,38 +73,44 @@ class AdvertisementCard extends React.Component {
     switch(this.props.type) {
       case FEED:
         return(
-          <div id={this.props.adv.id} className='card-adv'>
+          <div id={this.state.adv.id} className='card-adv'>
             <img src={placeholder} alt='Imagem do livro anunciado' className="card-adv__book-image" />
             <div className='card-adv__card-info col'>
-              <h2 className='title'>{this.props.adv.book_title}</h2>
-              <p className='author'> <b>Autor:</b> {this.props.adv.book_author}</p>
-              <p className='publication'> <b>Editora:</b> {this.props.adv.book_publication}</p>
-              <p className='comment'> <b>Comentário do Usuário:</b> {this.props.adv.comment}</p>
+              <h2 className='title'>{this.state.adv.book_title}</h2>
+              <p className='author'> <b>Autor:</b> {this.state.adv.book_author}</p>
+              <p className='publication'> <b>Editora:</b> {this.state.adv.book_publication}</p>
+              <p className='comment'> <b>Comentário do Usuário:</b> {this.state.adv.comment}</p>
             </div>
             <div className='card-adv__right-info'>
-              <p className='created-at'> <b>Criado às:</b> {this.props.adv.created_at} </p>
-              <p className='username'> <b>Por:</b> {this.props.adv.user.username}</p>
+              <p className='created-at'> <b>Criado às:</b> {this.state.adv.created_at} </p>
+              <p className='username'> <b>Por:</b> {this.state.adv.user.username}</p>
               <button className="btn btn-blue">Ofertar</button>
             </div>
           </div>
         );
+      
       case MANAGE:
         return(
-          <div id={this.props.adv.id} className='card-adv'>
+          <div id={this.state.adv.id} className='card-adv'>
             <div className='card-adv__card-info row'>
-              <h2 className='title'>{this.props.adv.book_title}</h2>
-              <p className='author'> <b>Autor:</b> {this.props.adv.book_author}</p>
-              <p className='publication'> <b>Editora:</b> {this.props.adv.book_publication}</p>
-              <p className='comment'> <b>Comentário:</b> {this.props.adv.comment}</p>
-              <p className='created-at'> <b>Criado às:</b> {this.props.adv.created_at} </p>
-              <p className='status'> <b>Status:</b> {this.props.adv.status} </p>
+              <h2 className='title'>{this.state.adv.book_title}</h2>
+              <p className='author'> <b>Autor:</b> {this.state.adv.book_author}</p>
+              <p className='publication'> <b>Editora:</b> {this.state.adv.book_publication}</p>
+              <p className='comment'> <b>Comentário:</b> {this.state.adv.comment}</p>
+              <p className='created-at'> <b>Criado às:</b> {this.state.adv.created_at} </p>
+              <p className='status'> <b>Status:</b> {this.formatStatus(this.state.adv.status)} </p>
               <div className='card-adv__right-info'>
                 <button className="btn-lg btn-blue">Editar</button>
-                <button className="btn btn-blue">Fechar anúncio</button>
+                {this.state.adv.status === 'open' ? 
+                  <button className="btn btn-blue" onClick={this.closeAdv}>Fechar anúncio</button>
+                  :
+                  <button className="btn btn-disabled" onClick={this.closeAdv} disabled>Anúncio fechado</button>
+                }
               </div>
             </div>
           </div>
         );
+      
       default:
         return(<div class="loader" />);
     }

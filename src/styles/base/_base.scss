@@ -60,3 +60,9 @@ button:disabled {
       color: $swab-blue;
   }
 }
+
+.btn-disabled {
+  background-color: #999;
+  border: .1em solid #eee;
+  color: #eee;
+}

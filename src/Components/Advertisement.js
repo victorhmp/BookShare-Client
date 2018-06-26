@@ -45,7 +45,7 @@ class Advertisement extends React.Component {
               <AdvertisementCard key={adv.id} adv={adv} type={MANAGE} />
             );
           })
-          : <div class="loader" />
+          : <div className="loader" />
           }
         </div>
       </section>
