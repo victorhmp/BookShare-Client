@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
               <AdvertisementCard key={adv.id} adv={adv} type="feed"/>
             );
           })
-          : <div class="loader" />
+          : <div className="loader" />
           }
         </div>
       </section>
