@@ -1,8 +1,9 @@
 #wishlist-header {
     background-color:$swab-blue;
     color: #fff;
-    height: 24em;    
+    height: 15em;    
     width: 100vw;    
+    padding-top: 5em;
 } 
 #wishlist-section {
     background-color: $swab-blue;
@@ -25,6 +26,7 @@
     border-color: $swab-orange;
     border-right: .3em;
     border-left: .3em;
+    width: 100vw;
 }
 #wishlist-description {
     margin-left: 1em;
