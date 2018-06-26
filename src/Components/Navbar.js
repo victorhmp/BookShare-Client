@@ -18,6 +18,9 @@ class Navbar extends React.Component {
         <ul className="navbar__items" role="navigation">
           <li> <NavLink to={this.props.loggedIn ? "/dash" : "/"} exact={true}> <img src={logo} className="navbar__logo" alt="logo" /> </NavLink> </li>
           <li> <NavLink to={this.props.loggedIn ? "/dash" : "/"} exact={true}>Home</NavLink> </li>
+          <li> <NavLink to={this.props.loggedIn ? "/advertisements" : "/"} exact={true}>My Advertisements</NavLink> </li>
+          <li> <NavLink to={this.props.loggedIn ? "/advertisements" : "/"} exact={true}>My Offers</NavLink> </li>
+          <li> <NavLink to={this.props.loggedIn ? "/advertisements" : "/"} exact={true}>My Trades</NavLink> </li>
 
           {this.props.loggedIn ? 
             <div className="right">

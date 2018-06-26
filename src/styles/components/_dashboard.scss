@@ -2,40 +2,6 @@
     background-color: $paper-white;
 }
 
-.btn {
-    border-radius: 25px;
-    font-size: 1em;
-    padding: 1vh 1vw;
-}
-
-.btn-lg {
-    border-radius: 25px;
-    font-size: 1.5em;
-    padding: 1.5vh 2vw;
-}
-
-.btn-orange {
-    background-color: $swab-orange;
-    border: .1em solid $swab-orange;
-    color: $phantom-white;
-
-    &:hover {
-        background-color: $phantom-white;
-        color: $swab-orange;
-    }
-}
-
-.btn-blue {
-    background-color: $swab-blue;
-    border: .1em solid $swab-blue;
-    color: $phantom-white;
-
-    &:hover {
-        background-color: $phantom-white;
-        color: $swab-blue;
-    }
-}
-
 .card-adv {
     display: flex;
     align-items: center;
@@ -58,7 +24,6 @@
     &__book-info {
         display: flex;
         align-items: center;
-        flex-direction: column;
         flex-wrap: wrap;
         justify-content: center;
 
@@ -74,5 +39,15 @@
         color: #999;
         font-size: 0.9em;
         // margin-left: auto;
+    }
+
+    .row {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70vw;
+    }
+
+    .col {
+        flex-direction: column;
     }
 }

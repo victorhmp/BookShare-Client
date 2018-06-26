@@ -18,7 +18,8 @@ import WishlistItem from './WishlistItem';
 import WishlistItemCreate from './WishlistItemCreate';
 import WishlistItemUpdate from './WishlistItemUpdate';
 
-import CreateAdvertisement from './CreateAdvertisement';
+import Advertisement from './Advertisement';
+import AdvertisementCreate from './AdvertisementCreate';
 
 class App extends Component {
   constructor() {
@@ -266,7 +267,10 @@ class App extends Component {
                 : <Redirect to="/wishlists"/>
               }
             />
-            <Route path="/new-advertisement" component={CreateAdvertisement} />
+
+            <Route path="/advertisements" component={Advertisement} />
+            <Route path="/new-advertisement" component={AdvertisementCreate} />
+
             <Route component={NotFoundPage} />
           </Switch>
         </div>

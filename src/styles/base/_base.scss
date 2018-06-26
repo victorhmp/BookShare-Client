@@ -24,3 +24,37 @@ button {
 button:disabled {
   cursor: default;
 }
+
+.btn {
+  border-radius: 25px;
+  font-size: 1em;
+  padding: 1vh 1vw;
+}
+
+.btn-lg {
+  border-radius: 25px;
+  font-size: 1.5em;
+  padding: 1.5vh 2vw;
+}
+
+.btn-orange {
+  background-color: $swab-orange;
+  border: .1em solid $swab-orange;
+  color: $phantom-white;
+
+  &:hover {
+      background-color: $phantom-white;
+      color: $swab-orange;
+  }
+}
+
+.btn-blue {
+  background-color: $swab-blue;
+  border: .1em solid $swab-blue;
+  color: $phantom-white;
+
+  &:hover {
+      background-color: $phantom-white;
+      color: $swab-blue;
+  }
+}

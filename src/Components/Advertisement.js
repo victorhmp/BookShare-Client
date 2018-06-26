@@ -6,17 +6,17 @@ import {Link} from 'react-router-dom';
 import Auth from '../Modules/Auth';
 import AdvertisementCard from './AdvertisementCard';
 
-class Dashboard extends React.Component {
+class Advertisement extends React.Component {
   constructor() {
     super();
     this.state = {
-      myFeed: null,
-      feedLoaded: false,
+      myAdv: null,
+      dataLoaded: false,
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/advertisements/feed', {
+    axios.get('http://localhost:3000/advertisements/user/my', {
       headers: {
         token: Auth.getToken(),
         'Authorization' : `Token ${Auth.getToken()}`,
@@ -24,8 +24,8 @@ class Dashboard extends React.Component {
     }).then((response) => {
       console.log(response.data);
       this.setState({
-        myFeed: response.data.feed,
-        feedLoaded: true
+        myAdv: response.data.advertisement,
+        dataLoaded: true
       })
     }).catch((err) => console.log(err));
   }
@@ -37,10 +37,10 @@ class Dashboard extends React.Component {
           <div className="button-container">
             <Link to='/new-advertisement'> <button className="btn-lg btn-orange">Anunciar livro</button> </Link>
           </div>
-          {(this.state.feedLoaded) 
-          ? this.state.myFeed.map(adv => {
+          {(this.state.dataLoaded) 
+          ? this.state.myAdv.map(adv => {
             return (
-              <AdvertisementCard key={adv.id} adv={adv} type="feed"/>
+              <AdvertisementCard key={adv.id} adv={adv} type="manage"/>
             );
           })
           : <div class="loader" />
@@ -51,4 +51,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default Advertisement;

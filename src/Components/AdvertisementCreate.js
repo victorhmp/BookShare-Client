@@ -2,7 +2,7 @@ import React from 'react';
 import Auth from '../Modules/Auth';
 import axios from 'axios';
 
-class CreateAdvertisement extends React.Component {
+class AdvertisementCreate extends React.Component {
   constructor() {
     super();
     this.baseState = {
@@ -133,4 +133,4 @@ class CreateAdvertisement extends React.Component {
   }
 }
 
-export default CreateAdvertisement;
+export default AdvertisementCreate;
