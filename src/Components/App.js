@@ -20,6 +20,7 @@ import WishlistItemUpdate from './WishlistItemUpdate';
 
 import Advertisement from './Advertisement';
 import AdvertisementCreate from './AdvertisementCreate';
+import OfferCreate from './OfferCreate';
 
 class App extends Component {
   constructor() {
@@ -270,6 +271,7 @@ class App extends Component {
 
             <Route path="/advertisements" component={Advertisement} />
             <Route path="/new-advertisement" component={AdvertisementCreate} />
+            <Route path="/new-offer/:advId" component={OfferCreate} />
 
             <Route component={NotFoundPage} />
           </Switch>
