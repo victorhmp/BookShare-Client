@@ -21,6 +21,7 @@ class AdvertisementCard extends React.Component {
         }
       }
     }
+    this.confirmClose = this.confirmClose.bind(this);
     this.closeAdv = this.closeAdv.bind(this);
     this.formatDate = this.formatDate.bind(this);
     this.formatStatus = this.formatStatus.bind(this);
@@ -54,6 +55,11 @@ class AdvertisementCard extends React.Component {
     return this.formattedDate;
   }
 
+  confirmClose(e) {
+    if(window.confirm('Deseja fechar o anúncio?'))
+      this.closeAdv;
+  }
+
   closeAdv(e) {
     e.preventDefault();
     this.url = 'http://localhost:3000/advertisements/close/';
@@ -81,6 +87,7 @@ class AdvertisementCard extends React.Component {
   render() {
     const FEED = 1;
     const MANAGE = 2;
+    const OFFER_URL = '/new-offer/' + this.state.adv.id;
 
     switch(this.props.type) {
       case FEED:
@@ -96,7 +103,7 @@ class AdvertisementCard extends React.Component {
             <div className='card-adv__right-info'>
               <p className='created-at'> <b>Criado às:</b> {this.formatDate(this.state.adv.created_at)} </p>
               <p className='username'> <b>Por:</b> {this.state.adv.user.username}</p>
-              <Link to={'http://localhost:8080/new-offer/' + this.state.adv.id}>
+              <Link to={OFFER_URL}>
                 <button className="btn btn-blue">Ofertar</button>
               </Link>
             </div>
@@ -116,7 +123,7 @@ class AdvertisementCard extends React.Component {
                 {this.state.adv.status === 'open' ? 
                   <div className='card-adv__right-info'>
                     <button className="btn-lg btn-blue">Editar</button>
-                    <button className="btn btn-blue" onClick={() => {if(window.confirm('Deseja fechar o anúncio?')) {this.closeAdv};}}>Fechar anúncio</button>
+                    <button className="btn btn-blue" onClick={this.confirmClose}>Fechar anúncio</button>
                   </div>
                   :
                   <div className='card-adv__right-info'>

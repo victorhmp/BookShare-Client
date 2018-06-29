@@ -1,9 +1,6 @@
 import React from 'react';
 import Auth from '../Modules/Auth';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-
-import placeholder from '../images/placeholder.png'
 
 class OfferCreate extends React.Component {
   constructor() {
