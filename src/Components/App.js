@@ -282,7 +282,7 @@ class App extends Component {
                 : <Redirect to="/"/>
               }
             />
-            
+
             <Route path="/my-advertisements"
               render={
                 () => (this.state.auth)
@@ -305,13 +305,7 @@ class App extends Component {
                 : <Redirect to="/" />
               }
             />
-            <Route path="/new-offer/:advId"
-              render={
-                () => (this.state.auth)
-                ? <OfferCreate />
-                : <Redirect to="/" />
-              }
-            />
+            <Route path="/new-offer/:advId" component={OfferCreate} />
 
             <Route path="/my-trades"
               render={
