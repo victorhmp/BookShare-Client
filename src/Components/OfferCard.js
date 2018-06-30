@@ -125,7 +125,26 @@ class OfferCard extends React.Component {
   }
 
   acceptOffer(e) {
-    alert("Aceitar");
+    e.preventDefault();
+    this.url = 'http://localhost:3000/offers/accept';
+    axios.post(this.url, JSON.stringify({id: this.state.offer.id, offer: this.state.offer}), {
+      headers: {
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`,
+        'Content-Type': 'application/json',
+      }
+    }).then((response) => {
+      console.log(response.data);
+      alert('Oferta aceita com sucesso!');
+
+      this.setState({
+        offer: response.data
+      });
+
+    }).catch((err) => {
+      console.log(err);
+      alert('Não foi possível aceitar esta oferta. Tente novamente mais tarde.');
+    });
   }
 
   declineOffer(e) {

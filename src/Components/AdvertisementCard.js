@@ -155,7 +155,7 @@ class AdvertisementCard extends React.Component {
               {this.mounted ? 
                 this.state.adv.offer.map(o => {
                   return (
-                    <OfferCard offer={o} type={ADVERTISEMENT}/>
+                    <OfferCard key={o.id} offer={o} type={ADVERTISEMENT}/>
                   );
                 })
                 :
