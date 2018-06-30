@@ -23,7 +23,7 @@ class Offer extends React.Component {
     }).then((response) => {
       console.log(response.data);
       this.setState({
-        myOffers: response.data.offer,
+        myOffers: response.data,
         dataLoaded: true
       })
     }).catch((err) => console.log(err));
@@ -38,7 +38,6 @@ class Offer extends React.Component {
           {(this.state.dataLoaded) 
           ? this.state.myOffers.map(o => {
             return (
-              // <AdvertisementCard key={adv.id} adv={adv} type={MANAGE} />
               <OfferCard key={o.id} offer={o} type={MANAGE}/>
             );
           })

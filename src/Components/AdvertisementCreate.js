@@ -87,7 +87,12 @@ class AdvertisementCreate extends React.Component {
         <div className="basic-form-wrapper">
           <form className="basic-form" onSubmit={(e) => this.handleCreateAdvSubmit(e, this.state)}>
             <h1 className="basic-form__title">Criar novo anúncio</h1>
-            <span className="basic-form__instructions"> Os campos com * são obrigatórios. </span>
+            <span className="basic-form__instructions">
+              LEMBRE-SE! Você poderá apenas editar seu COMENTÁRIO posteriormente. Verifique seus dados calmamente antes de confirmar seu anúncio!
+            </span>
+            <span className="basic-form__instructions">
+              Os campos com * são obrigatórios.
+            </span>
 
             <input 
               type="text"

@@ -91,7 +91,12 @@ class OfferCreate extends React.Component {
         <div className="basic-form-wrapper">
           <form className="basic-form" onSubmit={(e) => this.handleCreateOfferSubmit(e, this.state)}>
             <h1 className="basic-form__title">Fazer nova oferta</h1>
-            <span className="basic-form__instructions"> Os campos com * são obrigatórios. </span>
+            <span className="basic-form__instructions">
+              LEMBRE-SE! Você não poderá editar sua oferta posteriormente. Caso queira oferecer outro livro ou corrigir algum dado, faça uma nova oferta.
+            </span>
+            <span className="basic-form__instructions">
+              Os campos com * são obrigatórios.
+            </span>
 
             <input 
               type="text"

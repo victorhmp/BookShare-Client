@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const FEED = 1;
+    const SHOW = 1;
 
     return (
       <section id="dashboard">
@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
           {(this.state.feedLoaded) 
           ? this.state.myFeed.map(adv => {
             return (
-              <AdvertisementCard key={adv.id} adv={adv} type={FEED} />
+              <AdvertisementCard key={adv.id} adv={adv} type={SHOW} />
             );
           })
           : <div className="loader" />
