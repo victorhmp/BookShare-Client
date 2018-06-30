@@ -29,14 +29,13 @@
 }
 
 .card-slim {
+  flex-direction: column;
   width: 50%;
 }
 
 // ADVERTISEMENT CARD
 
 .card-adv {
-  flex-direction: column;
-
   &__book-image {
       // margin-right: auto;
       box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);

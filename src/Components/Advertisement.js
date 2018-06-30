@@ -24,10 +24,10 @@ class Advertisement extends React.Component {
     }).then((response) => {
       console.log(response.data);
       this.setState({
-        myAdv: response.data.advertisement,
+        myAdv: response.data,
         dataLoaded: true
       })
-    })
+    }).catch((err) => console.log(err));
   }
 
   render() {
