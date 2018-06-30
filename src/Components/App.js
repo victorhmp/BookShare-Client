@@ -273,13 +273,43 @@ class App extends Component {
               }
             />
 
-            <Route path="/my-advertisements" component={Advertisement} />
-            <Route path="/new-advertisement" component={AdvertisementCreate} />
+            <Route path="/my-advertisements"
+              render={
+                () => (this.state.auth)
+                ? <Advertisement />
+                : <Redirect to="/" />
+              }
+            />
+            <Route path="/new-advertisement"
+              render={
+                () => (this.state.auth)
+                ? <AdvertisementCreate />
+                : <Redirect to="/" />
+              }
+            />
 
-            <Route path="/my-offers" component={Offer} />
-            <Route path="/new-offer/:advId" component={OfferCreate} />
+            <Route path="/my-offers"
+              render={
+                () => (this.state.auth)
+                ? <Offer />
+                : <Redirect to="/" />
+              }
+            />
+            <Route path="/new-offer/:advId"
+              render={
+                () => (this.state.auth)
+                ? <OfferCreate />
+                : <Redirect to="/" />
+              }
+            />
 
-            <Route path="/my-trades" component={Trade} />
+            <Route path="/my-trades"
+              render={
+                () => (this.state.auth)
+                ? <Trade />
+                : <Redirect to="/" />
+              }
+            />
 
             <Route component={NotFoundPage} />
           </Switch>

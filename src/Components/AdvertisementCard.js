@@ -93,7 +93,7 @@ class AdvertisementCard extends React.Component {
       alert('Anúncio fechado com sucesso');
 
       this.setState({
-        adv: response.data.advertisement
+        adv: response.data
       });
 
     }).catch((err) => {
