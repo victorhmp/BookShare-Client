@@ -2,20 +2,21 @@ import React from 'react';
 import Auth from '../Modules/Auth';
 import axios from 'axios';
 
-class AdvertisementCreate extends React.Component {
+class OfferCreate extends React.Component {
   constructor() {
     super();
     this.baseState = {
       book_title: '', 
       book_author: '',
       book_publication: '',
-      comment: '', 
+      comment: '',
+      advertisement_id: null,
       status: 0
     };
 
     this.state = this.baseState;
     this.handleChange = this.handleChange.bind(this);
-    this.handleCreateAdvSubmit = this.handleCreateAdvSubmit.bind(this);
+    this.handleCreateOfferSubmit = this.handleCreateOfferSubmit.bind(this);
     this.clearForm = this.clearForm.bind(this);
     this.checkForm = this.checkForm.bind(this);
   }
@@ -60,12 +61,11 @@ class AdvertisementCreate extends React.Component {
     });
   }
 
-  handleCreateAdvSubmit(e, data) {
+  handleCreateOfferSubmit(e, data) {
     e.preventDefault();
-
     if (!this.checkForm()) return;
 
-    axios.post(`http://localhost:3000/advertisements`, JSON.stringify(data), {
+    axios.post(`http://localhost:3000/offers`, JSON.stringify(data), {
       headers: {
         token: Auth.getToken(),
         'Authorization': `Token ${Auth.getToken()}`,
@@ -73,22 +73,26 @@ class AdvertisementCreate extends React.Component {
       }
     }).then(response => {
       console.log(response);
-      alert("Anuncio feito com sucesso!");
+      alert("Oferta feita com sucesso!");
       this.clearForm();
     }).catch(err => {
       console.log(err);
-      alert("Erro ao criar anúncio. Tente novamente.");
+      alert("Erro ao criar oferta. Tente novamente.");
     })
+  }
+
+  componentDidMount() {
+    this.setState({...this.state, advertisement_id: this.props.match.params.advId});
   }
 
   render() {
     return (
-      <section id="createAdvForm"> 
+      <section id="createOfferForm"> 
         <div className="basic-form-wrapper">
-          <form className="basic-form" onSubmit={(e) => this.handleCreateAdvSubmit(e, this.state)}>
-            <h1 className="basic-form__title">Criar novo anúncio</h1>
+          <form className="basic-form" onSubmit={(e) => this.handleCreateOfferSubmit(e, this.state)}>
+            <h1 className="basic-form__title">Fazer nova oferta</h1>
             <span className="basic-form__instructions">
-              LEMBRE-SE! Você poderá apenas editar seu COMENTÁRIO posteriormente. Verifique seus dados calmamente antes de confirmar seu anúncio!
+              LEMBRE-SE! Você não poderá editar sua oferta posteriormente. Caso queira oferecer outro livro ou corrigir algum dado, faça uma nova oferta.
             </span>
             <span className="basic-form__instructions">
               Os campos com * são obrigatórios.
@@ -125,12 +129,12 @@ class AdvertisementCreate extends React.Component {
               type="textarea"
               className="basic-form__textarea"
               name="comment"
-              placeholder="Comentário sobre seu anúncio"
+              placeholder="Comentário sobre sua oferta"
               value={this.state.comment}
               onChange={this.handleChange}
             />
 
-            <button className="basic-form__btn">Anunciar</button>
+            <button className="basic-form__btn">Ofertar</button>
           </form>
         </div>
       </section>
@@ -138,4 +142,4 @@ class AdvertisementCreate extends React.Component {
   }
 }
 
-export default AdvertisementCreate;
+export default OfferCreate;

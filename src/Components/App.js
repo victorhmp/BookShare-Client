@@ -22,6 +22,11 @@ import Advertisement from './Advertisement';
 import AdvertisementCreate from './AdvertisementCreate';
 import Profile from './Profile';
 
+import Offer from './Offer';
+import OfferCreate from './OfferCreate';
+
+import Trade from './Trade';
+
 class App extends Component {
   constructor() {
     super();
@@ -277,9 +282,44 @@ class App extends Component {
                 : <Redirect to="/"/>
               }
             />
+            
+            <Route path="/my-advertisements"
+              render={
+                () => (this.state.auth)
+                ? <Advertisement />
+                : <Redirect to="/" />
+              }
+            />
+            <Route path="/new-advertisement"
+              render={
+                () => (this.state.auth)
+                ? <AdvertisementCreate />
+                : <Redirect to="/" />
+              }
+            />
 
-            <Route path="/advertisements" component={Advertisement} />
-            <Route path="/new-advertisement" component={AdvertisementCreate} />
+            <Route path="/my-offers"
+              render={
+                () => (this.state.auth)
+                ? <Offer />
+                : <Redirect to="/" />
+              }
+            />
+            <Route path="/new-offer/:advId"
+              render={
+                () => (this.state.auth)
+                ? <OfferCreate />
+                : <Redirect to="/" />
+              }
+            />
+
+            <Route path="/my-trades"
+              render={
+                () => (this.state.auth)
+                ? <Trade />
+                : <Redirect to="/" />
+              }
+            />
 
             <Route component={NotFoundPage} />
           </Switch>

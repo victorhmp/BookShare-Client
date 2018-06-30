@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 html {
   height: 100%;
   width: 100%;
@@ -5,7 +7,7 @@ html {
 
 body {
   background: $paper-white;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
 
   margin: 0;
@@ -35,6 +37,8 @@ button:disabled {
   border-radius: 25px;
   font-size: 1.5em;
   padding: 1.5vh 2vw;
+
+  margin-bottom: .2em;
 }
 
 .btn-orange {
@@ -57,4 +61,32 @@ button:disabled {
       background-color: $phantom-white;
       color: $swab-blue;
   }
+}
+
+.btn-red {
+  background-color: red;
+  border: .1em solid red;
+  color: $phantom-white;
+
+  &:hover {
+      background-color: $phantom-white;
+      color: red;
+  }
+}
+
+.btn-green {
+  background-color: green;
+  border: .1em solid green;
+  color: $phantom-white;
+
+  &:hover {
+      background-color: $phantom-white;
+      color: green;
+  }
+}
+
+.btn-disabled {
+  background-color: #999;
+  border: .1em solid #eee;
+  color: #eee;
 }
