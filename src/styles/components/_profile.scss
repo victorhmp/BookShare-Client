@@ -1,0 +1,42 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 15vh;
+  max-height: 100vh;
+  background-color: $swab-orange;
+}
+
+.profile__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  background-color: $swab-blue;
+  height: 80vh;
+}
+
+.profile__title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  min-width: 60vw;
+  font-size: 2.5em;
+}
+
+.profile__gravatar {
+  border-radius: 40px;
+}
+
+.profile__info {
+  padding: 1rem;
+  font-size: 1.3em;
+  color: $blue;
+}
+
+.email {
+  color: $blue;
+}
