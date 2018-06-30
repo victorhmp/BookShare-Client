@@ -32,10 +32,14 @@ class OfferCard extends React.Component {
     }
     this.mounted = false;
     this.buttonMessage = this.buttonMessage.bind(this);
-    this.cancelOffer = this.cancelOffer.bind(this);
     this.statusClassName = this.statusClassName.bind(this);
+
     this.formatDate = this.formatDate.bind(this);
     this.formatStatus = this.formatStatus.bind(this);
+
+    this.cancelOffer = this.cancelOffer.bind(this);
+    this.acceptOffer = this.acceptOffer.bind(this);
+    this.declineOffer = this.declineOffer.bind(this);
   }
 
   componentDidMount() {
@@ -120,8 +124,17 @@ class OfferCard extends React.Component {
     });
   }
 
+  acceptOffer(e) {
+    alert("Aceitar");
+  }
+
+  declineOffer(e) {
+    alert("Rejeitar");
+  }
+
   render() {
     const MANAGE = 1;
+    const ADVERTISEMENT = 2;
     const OFFER = 3;
 
     switch(this.props.type) {
@@ -154,6 +167,36 @@ class OfferCard extends React.Component {
                 <AdvertisementCard adv={this.state.offer.advertisement} type={OFFER}/>
                 :
                 <div className="loader" />
+              }
+            </div>
+          </div>
+        );
+
+      case ADVERTISEMENT:
+        return(
+          <div id={this.state.offer.id} className='card card-offer'>
+            <div className='card-offer__card-info'>
+              <h2 className='title'>{this.state.offer.book_title}</h2>
+              <p className='author'> <b>Autor:</b> {this.state.offer.book_author}</p>
+              <p className='publication'> <b>Editora:</b> {this.state.offer.book_publication}</p>
+              <p className='comment'> <b>Comentário:</b> {this.state.offer.comment}</p>
+              <p className='created-at'> <b>Criado às:</b> {this.formatDate(this.state.offer.created_at)} </p>
+              <p className={this.statusClassName(this.state.offer.status)}>
+                <b>Status:</b> {this.formatStatus(this.state.offer.status)}
+              </p>
+              {this.state.offer.status === 'pending' ? 
+                <div className='card-offer__card-info'>
+                  <button className="btn-lg btn-green" onClick={this.acceptOffer}>
+                    Aceitar
+                  </button>
+                  <button className="btn btn-red" onClick={this.declineOffer}>
+                    Rejeitar
+                  </button>
+                </div>
+                :
+                <div className='card-offer__card-info'>
+                  <button className="btn btn-disabled" disabled>{this.buttonMessage(this.state.offer.status)}</button>
+                </div>
               }
             </div>
           </div>

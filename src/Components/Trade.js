@@ -32,8 +32,6 @@ class Trade extends React.Component {
   }
 
   render() {
-    const MANAGE = 1;
-
     return (
       <section id="my-offers">
         <div className="section-wrapper">

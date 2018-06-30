@@ -63,6 +63,28 @@ button:disabled {
   }
 }
 
+.btn-red {
+  background-color: red;
+  border: .1em solid red;
+  color: $phantom-white;
+
+  &:hover {
+      background-color: $phantom-white;
+      color: red;
+  }
+}
+
+.btn-green {
+  background-color: green;
+  border: .1em solid green;
+  color: $phantom-white;
+
+  &:hover {
+      background-color: $phantom-white;
+      color: green;
+  }
+}
+
 .btn-disabled {
   background-color: #999;
   border: .1em solid #eee;

@@ -4,6 +4,7 @@ import Auth from '../Modules/Auth';
 import {Link} from 'react-router-dom';
 
 import placeholder from '../images/placeholder.png'
+import OfferCard from './OfferCard';
 
 class AdvertisementCard extends React.Component {
   constructor() {
@@ -18,10 +19,23 @@ class AdvertisementCard extends React.Component {
         status: 0,
         user: {
           username: ''
+        },
+        offer: {
+          id: 0,
+          book_title: '', 
+          book_author: '',
+          book_publication: '',
+          comment: '', 
+          status: 0,
+          user: {
+            username: ''
+          }
         }
       }
     }
+    this.mounted = false;
     this.closeAdv = this.closeAdv.bind(this);
+    this.statusClassName = this.statusClassName.bind(this);
     this.formatDate = this.formatDate.bind(this);
     this.formatStatus = this.formatStatus.bind(this);
   }
@@ -30,6 +44,7 @@ class AdvertisementCard extends React.Component {
     this.setState({
       adv: this.props.adv
     });
+    this.mounted = true;
   }
 
   formatStatus(status) {
@@ -40,6 +55,15 @@ class AdvertisementCard extends React.Component {
         return 'Fechado'
       default:
         return 'Indefinido'
+    }
+  }
+
+  statusClassName(status) {
+    switch(status) {
+      case 'closed':
+        return 'status cancelled'
+      default:
+        return 'status'
     }
   }
 
@@ -81,6 +105,7 @@ class AdvertisementCard extends React.Component {
   render() {
     const SHOW = 1;
     const MANAGE = 2;
+    const ADVERTISEMENT = 2;
     const OFFER = 3;
 
     switch(this.props.type) {
@@ -89,7 +114,7 @@ class AdvertisementCard extends React.Component {
         return(
           <div id={this.state.adv.id} className='card card-adv'>
             <img src={placeholder} alt='Imagem do livro anunciado' className="card-adv__book-image" />
-            <div className='card-adv__card-info col'>
+            <div className='card-adv__card-info'>
               <h2 className='title'>{this.state.adv.book_title}</h2>
               <p className='author'> <b>Autor:</b> {this.state.adv.book_author}</p>
               <p className='publication'> <b>Editora:</b> {this.state.adv.book_publication}</p>
@@ -107,35 +132,44 @@ class AdvertisementCard extends React.Component {
       
       case MANAGE:
         return(
-          <div id={this.state.adv.id} className='card card-adv'>
-            <div className='card-adv__card-info row'>
+          <div id={this.state.adv.id} className='card card-adv card-slim'>
+            <div className='card-adv__card-info'>
               <h2 className='title'>{this.state.adv.book_title}</h2>
               <p className='author'> <b>Autor:</b> {this.state.adv.book_author}</p>
               <p className='publication'> <b>Editora:</b> {this.state.adv.book_publication}</p>
               <p className='comment'> <b>Comentário:</b> {this.state.adv.comment}</p>
               <p className='created-at'> <b>Criado às:</b> {this.formatDate(this.state.adv.created_at)} </p>
-              <p className='status'> <b>Status:</b> {this.formatStatus(this.state.adv.status)} </p>
-                {this.state.adv.status === 'open' ? 
-                  <div className='card-adv__right-info'>
-                    <button className="btn-lg btn-blue">Editar</button>
-                    <button className="btn btn-blue" onClick={this.closeAdv}>Fechar anúncio</button>
-                  </div>
-                  :
-                  <div className='card-adv__right-info'>
-                    <button className="btn-lg btn-disabled" disabled>Editar</button>
-                    <button className="btn btn-disabled" disabled>Anúncio fechado</button>
-                  </div>
-                }
-              </div>
-            
+              <p className={this.statusClassName(this.state.adv.status)}> <b>Status:</b> {this.formatStatus(this.state.adv.status)} </p>
+              {this.state.adv.status === 'open' ?
+                  <button className="btn-lg btn-blue">Editar</button>
+                :
+                  <button className="btn-lg btn-disabled" disabled>Editar</button>
+              }
+              {this.state.adv.status === 'open' ?
+                <button className="btn btn-blue" onClick={this.closeAdv}>Fechar anúncio</button>
+              :
+                <button className="btn btn-disabled" disabled>Anúncio fechado</button>
+              }
+            </div>
+            <div className='card-adv__offer-area'>
+              {this.mounted ? 
+                this.state.adv.offer.map(o => {
+                  return (
+                    <OfferCard offer={o} type={ADVERTISEMENT}/>
+                  );
+                })
+                :
+                <div className="loader" />
+              }
+            </div>
           </div>
         );
 
       case OFFER:
-      return(
-        <div id={this.state.adv.id} className='card card-darker card-adv'>
+        return(
+          <div id={this.state.adv.id} className='card card-darker card-adv'>
             <img src={placeholder} alt='Imagem do livro anunciado' className="card-adv__book-image" />
-            <div className='card-adv__card-info col'>
+            <div className='card-adv__card-info'>
               <h2 className='title'>{this.state.adv.book_title}</h2>
               <p className='author'> <b>Autor:</b> {this.state.adv.book_author}</p>
               <p className='publication'> <b>Editora:</b> {this.state.adv.book_publication}</p>
@@ -146,7 +180,7 @@ class AdvertisementCard extends React.Component {
               <p className='username'> <b>Por:</b> {this.state.adv.user.username}</p>
             </div>
           </div>
-      );
+        );
       
       default:
         return(<div class="loader" />);

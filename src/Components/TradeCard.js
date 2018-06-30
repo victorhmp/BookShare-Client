@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import Auth from '../Modules/Auth';
 
 class TradeCard extends React.Component {
   constructor() {
