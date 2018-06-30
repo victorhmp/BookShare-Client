@@ -103,3 +103,22 @@
     width: 100%;
   }
 }
+
+// TRADE CARD
+
+.card-trade {
+  flex-direction: column;
+  justify-content: center;
+
+  &__card-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      padding-bottom: 1.5rem;
+
+      color: #666;
+  }
+}

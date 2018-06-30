@@ -23,7 +23,7 @@ class Navbar extends React.Component {
             <div className="right">
               <li> <NavLink to={this.props.loggedIn ? "/my-advertisements" : "/"} exact={true}>My Advertisements</NavLink> </li>
               <li> <NavLink to={this.props.loggedIn ? "/my-offers" : "/"} exact={true}>My Offers</NavLink> </li>
-              <li> <NavLink to={this.props.loggedIn ? "/advertisements" : "/"} exact={true}>My Trades</NavLink> </li>
+              <li> <NavLink to={this.props.loggedIn ? "/my-trades" : "/"} exact={true}>My Trades</NavLink> </li>
               <li> <NavLink to={this.props.loggedIn ? "/wishlists" : "/"} exact={true}>My Wishlists</NavLink> </li>
               <li> <NavLink to={this.props.loggedIn ? "/profile" : "/"} exact={true}>My Profile</NavLink> </li>
               <li> <span onClick={this.props.handleLogout}>Logout</span> </li>            </div>

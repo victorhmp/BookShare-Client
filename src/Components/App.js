@@ -24,6 +24,8 @@ import AdvertisementCreate from './AdvertisementCreate';
 import Offer from './Offer';
 import OfferCreate from './OfferCreate';
 
+import Trade from './Trade';
+
 class App extends Component {
   constructor() {
     super();
@@ -276,6 +278,8 @@ class App extends Component {
 
             <Route path="/my-offers" component={Offer} />
             <Route path="/new-offer/:advId" component={OfferCreate} />
+
+            <Route path="/my-trades" component={Trade} />
 
             <Route component={NotFoundPage} />
           </Switch>
